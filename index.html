@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
@@ -586,6 +585,18 @@
             position: relative;
             padding-left: 18px;
             border-left: 3px solid var(--blue-accent);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .p1-experience {
+            font-family: 'Outfit', sans-serif;
+            font-style: normal;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .p1-quote-box {
@@ -647,6 +658,75 @@
             padding-bottom: 18px;
             margin-top: 0;
             padding-top: 0;
+        }
+
+        /* Page: Education */
+        .page-edu {
+            background: var(--soft-white);
+        }
+
+        .page-edu .page-body {
+            display: flex;
+            flex-direction: column;
+            padding: 56px 60px;
+            min-height: 0;
+        }
+
+        .page-edu .header-section,
+        .page-edu .education-list {
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 6px;
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 24px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-date {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-grey);
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .education-details {
+            background: #fff;
+            border-left: 3px solid var(--navy);
+            padding: 16px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .education-school {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--gold-accent);
+            margin-bottom: 8px;
+        }
+
+        .education-field {
+            font-size: 12px;
+            color: var(--text-soft);
+            line-height: 1.6;
         }
 
         .timeline-container {
@@ -774,6 +854,41 @@
             font-size: 14px;
             color: var(--gold-accent);
             margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .timeline-location {
+            font-family: 'Outfit', sans-serif;
+            font-style: normal;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+        }
+
+        .timeline-stats {
+            margin: 10px 0 8px;
+            display: grid;
+            gap: 4px;
+        }
+
+        .timeline-stat {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #dc2626;
+        }
+
+        .timeline-stat-value {
+            color: #b91c1c;
         }
 
         .parallel-badge {
@@ -798,6 +913,19 @@
             font-style: italic;
             opacity: 0.8;
             overflow-wrap: anywhere;
+        }
+
+        .timeline-meta {
+            font-size: 11px;
+            color: var(--text-soft);
+            line-height: 1.6;
+            margin-bottom: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .timeline-meta strong {
+            color: var(--navy);
+            font-weight: 700;
         }
 
         .timeline-highlights {
@@ -1332,218 +1460,6 @@
             transform: scale(1.05);
         }
 
-        /* Page 6: Dashboard */
-        .page-6 {
-            background: #0b1227;
-            color: var(--white);
-        }
-
-        .page-6 .page-body {
-            display: flex;
-            flex-direction: column;
-            padding: 46px 52px;
-            min-height: 0;
-        }
-
-        .page-6 .dashboard-header,
-        .page-6 .dashboard-container {
-            margin-left: 80px;
-            margin-right: 80px;
-        }
-
-        .page-6 .chart-area.panel-chart {
-            padding-top: 6px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .dashboard-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--gold-accent);
-        }
-
-        .dashboard-container {
-            flex-grow: 1;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 20px;
-            min-height: 0;
-        }
-
-        .dash-panel {
-            background: rgba(15, 23, 42, 0.72);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(16px);
-            border-radius: 16px;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            min-height: 0;
-        }
-
-        .dash-panel::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.12;
-            pointer-events: none;
-        }
-
-        .panel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-            flex-wrap: wrap;
-            row-gap: 6px;
-        }
-
-        .panel-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-grey);
-            min-width: 0;
-        }
-
-        .panel-kpi {
-            font-size: 10px;
-            color: #4ade80;
-            letter-spacing: 1px;
-        }
-
-        .stat-big {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--white);
-            text-shadow: 0 0 16px var(--blue-glow);
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-unit {
-            font-size: 14px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .stat-sub {
-            font-size: 11px;
-            color: var(--blue-accent);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .chart-area {
-            flex: 1 1 auto;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            border: 1px dashed rgba(255, 255, 255, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            min-height: 140px;
-            min-width: 0;
-        }
-
-        .chart-canvas {
-            width: 100% !important;
-            height: 100% !important;
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-        .chart-area::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -40%;
-            width: 40%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--blue-accent), transparent);
-            opacity: 0.6;
-            animation: scan 6s linear infinite;
-        }
-
-        .css-bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            height: 60%;
-            width: 80%;
-        }
-
-        .css-bar {
-            flex: 1;
-            background: linear-gradient(to top, var(--blue-accent), #60a5fa);
-            border-radius: 4px 4px 0 0;
-            transform-origin: bottom;
-            animation: growBar 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            opacity: 0;
-        }
-
-        .css-bar:nth-child(1) { animation-delay: 0.2s; }
-        .css-bar:nth-child(2) { animation-delay: 0.3s; }
-        .css-bar:nth-child(3) { animation-delay: 0.4s; }
-        .css-bar:nth-child(4) { animation-delay: 0.5s; }
-        .css-bar:nth-child(5) { animation-delay: 0.6s; }
-
-        .dash-panel.wide {
-            grid-column: 1 / -1;
-            flex-direction: row;
-            align-items: stretch;
-            gap: 20px;
-            min-height: 0;
-        }
-
-        .panel-info {
-            width: 30%;
-            min-width: 0;
-        }
-
-        .panel-chart {
-            width: 65%;
-            height: 100%;
-            min-height: 0;
-            align-self: stretch;
-        }
-
-        .panel-note {
-            font-size: 11px;
-            color: var(--text-grey);
-            line-height: 1.5;
-            margin-top: 6px;
-            overflow-wrap: anywhere;
-        }
-
-        .stat-gold {
-            color: var(--gold-accent);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-
         /* Page 7: Strategy */
         .page-7 {
             background: var(--white);
@@ -1724,6 +1640,14 @@
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 34px;
+        }
+
+        .contact-message {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: -20px;
+            margin-bottom: 26px;
+            line-height: 1.6;
         }
 
         .contact-card {
@@ -1923,15 +1847,23 @@
                 margin-right: 42px;
             }
 
-            .page-7 .header-section,
-            .page-7 .process-wrapper,
-            .page-7 .strategy-box {
+            .page-edu .header-section,
+            .page-edu .education-list {
                 margin-left: 42px;
                 margin-right: 42px;
             }
 
-            .page-6 .dashboard-header,
-            .page-6 .dashboard-container {
+            .education-item {
+                grid-template-columns: 1fr;
+            }
+
+            .education-date {
+                text-align: left;
+            }
+
+            .page-7 .header-section,
+            .page-7 .process-wrapper,
+            .page-7 .strategy-box {
                 margin-left: 42px;
                 margin-right: 42px;
             }
@@ -1948,7 +1880,6 @@
             .page-3 .page-body,
             .page-4 .page-body,
             .page-5 .page-body,
-            .page-6 .page-body,
             .page-7 .page-body {
                 padding: 42px;
             }
@@ -1973,20 +1904,6 @@
 
             .skills-right {
                 grid-template-columns: 1fr;
-            }
-
-            .dashboard-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-
-            .dash-panel.wide {
-                flex-direction: column;
-            }
-
-            .panel-info,
-            .panel-chart {
-                width: 100%;
             }
 
             .process-wrapper {
@@ -2295,7 +2212,7 @@
         </div>
         <div class="page-body">
         <div class="p1-left">
-            <img class="photo-placeholder-img loaded" src="intro.png" alt="Marcin Lubera">
+            <img class="photo-placeholder-img loaded" src="./stary 1.png" alt="Marcin Lubera">
             <div class="photo-placeholder-fallback">
                 <i class="fas fa-user-tie"></i>
                 <span>Marcin Lubera</span>
@@ -2303,14 +2220,18 @@
         </div>
         <div class="p1-right">
             <div class="eyebrow">Premium Tech Magazine</div>
-            <div class="p1-role glow-text">General Director & E-commerce Strategist</div>
+            <div class="p1-role glow-text">
+                Dyrektor ds. Rozwoju Produktu, Marketingu i E-commerce
+                <span class="p1-experience">Doświadczenie: 11 lat</span>
+            </div>
             <h1 class="p1-name">MARCIN<br>LUBERA</h1>
             <div class="p1-quote-box glass">
                 <p class="p1-quote">"Jeśli potrafisz o czymś marzyć, to potrafisz także tego dokonać"</p>
                 <div class="p1-tag">Walt Disney</div>
                 <p class="p1-summary">
-                    Skuteczny menadżer z 11-letnim doświadczeniem. Łączę strategię rozwoju produktu z twardą analityką marketingu i sprzedaży (B2B/B2C).
-                    <span class="p1-highlight">Ekspert od skalowania biznesu i wdrażania innowacji (AI/LLM).</span>
+                    Posiadam ponad <span class="p1-highlight">11 letnie do&#347;wiadczenie</span> w szeroko poj&#281;tym marketingu cyfrowym jak i tradycyjnym dla B2C oraz B2B. Ponad <span class="p1-highlight">6 letnie do&#347;wiadczenie</span> w zarz&#261;dzaniu zespo&#322;ami oraz poszczeg&#243;lnymi dzia&#322;ami w firmach.<br>
+                    Ch&#281;tnie opowiem szerzej o swoim do&#347;wiadczeniu zawodowym oraz umiej&#281;tno&#347;ciach.<br>
+                    Wierz&#281;, &#380;e moja osoba przyda si&#281; u Pa&#324;stwa w Organizacji.
                 </p>
             </div>
         </div>
@@ -2321,149 +2242,267 @@
         </div>
     </section>
 
-    <!-- Strona 2 -->
-    <section class="page page-2" id="page2">
+
+<!-- Strona 2 -->
+<section class="page page-2" id="page2">
+    <div class="page-decor">
+        <div class="grid-pattern grid-pattern--light"></div>
+    </div>
+    <div class="header-section">
+        <div>
+            <div class="page-title">Do&#347;wiadczenie Zawodowe</div>
+            <div class="header-caption">Od Specialist do General Director</div>
+        </div>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline-track">
+        <div class="timeline-item">
+            <div class="timeline-year">09.2024 - OBECNIE</div>
+            <div class="timeline-content">
+                <span class="parallel-badge">R&#211;WNOLEGLE</span>
+                <div class="timeline-role">General Marketing Director</div>
+                <div class="timeline-company">Zapakujemy.pl sp. z o.o. <span class="timeline-location">Wroc&#322;aw</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">100+ ty&#347; z&#322;</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">6 OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">1400+</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, Allegro, SEO, E-mail, Influencer marketing</div>
+                <p class="timeline-note">Zarz&#261;dzanie ca&#322;o&#347;ciow&#261; strategi&#261; wzrostu i transformacj&#261; cyfrow&#261; marki wraz z marketingiem.</p>
+                <ul class="timeline-achievements">
+                    <li>Skalowanie e-commerce i optymalizacja B2B/B2C.</li>
+                    <li>Wdra&#380;anie AI i automatyzacji marketingu.</li>
+                    <li>Zbudowanie 6-osobowego zespo&#322;u.</li>
+                    <li>Analityka predykcyjna w sprzeda&#380;y.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">E-commerce</span>
+                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                    <span class="timeline-highlight">Product Manager</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">11.2024 - 12.2025</div>
+            <div class="timeline-content">
+                <span class="parallel-badge">R&#211;WNOLEGLE</span>
+                <div class="timeline-role">General Marketing Director</div>
+                <div class="timeline-company">ISO TRADE sp. z o.o. <span class="timeline-location">Legnica</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">3.2+ mln z&#322;</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">30+ OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">12 500+</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, LinkedIn, Allegro, Empik, Temu, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
+                <p class="timeline-note">Budowanie strategii marketingowej B2C oraz B2B dla firmy handlowej oraz rozw&#243;j kana&#322;&#243;w sprzeda&#380;y wraz z pozyskiwaniem merchant&#243;w.</p>
+                <ul class="timeline-achievements">
+                    <li>Budowa i egzekucja strategii marketingowej dla segmentu B2C oraz B2B.</li>
+                    <li>Optymalizacja kampanii sprzeda&#380;owych i dzia&#322;a&#324; trade marketing.</li>
+                    <li>Rozw&#243;j kana&#322;&#243;w sprzeda&#380;y oraz wdro&#380;enie proces&#243;w handlowych.</li>
+                    <li>Zarz&#261;dzanie dzia&#322;em detalu oraz hurtu.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">E-commerce</span>
+                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                    <span class="timeline-highlight">End-to-End</span>
+                    <span class="timeline-highlight">Product Owner</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">11.2020 - 05.2025</div>
+            <div class="timeline-content">
+                <div class="timeline-role">General Director</div>
+                <div class="timeline-company">Just be FIT sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">250+ ty&#347; z&#322;</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">75+ OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">100+</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, Pinterest, LinkedIn, WP ads, Onet ads, Allegro, Empik, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
+                <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Plac&#243;wki partnerskie</div>
+                <p class="timeline-note">Kompleksowe zarz&#261;dzanie nad firm&#261;, skalowanie i rozw&#243;j brandu oraz podmarek.</p>
+                <ul class="timeline-achievements">
+                    <li>Zarz&#261;dzanie firm&#261; oraz strategiczny nadz&#243;r nad rozwojem.</li>
+                    <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
+                    <li>Product Owner oraz zarz&#261;dzanie ca&#322;&#261; firm&#261; - 75+ os&#243;b.</li>
+                    <li>100% zrealizowanie za&#322;o&#380;e&#324; biznesowych firmy.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">Marketing</span>
+                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                    <span class="timeline-highlight">Rozw&#243;j produkt&#243;w</span>
+                    <span class="timeline-highlight">Outcome-Driven</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="page-footer-info">
+        <div class="page-label">Professional Journey</div>
+        <div class="page-number">02 / 09</div>
+    </div>
+</section>
+
+
+<!-- Strona 2b -->
+<section class="page page-2" id="page2b">
+    <div class="page-decor">
+        <div class="grid-pattern grid-pattern--light"></div>
+    </div>
+    <div class="header-section">
+        <div>
+            <div class="page-title">Do&#347;wiadczenie Zawodowe</div>
+            <div class="header-caption">Od Specialist do General Director</div>
+        </div>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline-track">
+
+        <div class="timeline-item">
+            <div class="timeline-year">01.2022 - 02.2024</div>
+            <div class="timeline-content">
+                <div class="timeline-role">Global Director</div>
+                <div class="timeline-company">FULL HELP sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">50+ ty&#347; z&#322;</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">15+ OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">50+</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, LinkedIn, SEO, E-mail, SMS</div>
+                <p class="timeline-note">Prowadzenie ekspansji na rynki zagraniczne, pe&#322;ne zarz&#261;dzanie rozwojem, marketingiem i zespo&#322;ami rozproszonymi.</p>
+                <ul class="timeline-achievements">
+                    <li>Ekspansja na rynki zagraniczne i koordynacja projekt&#243;w mi&#281;dzynarodowych.</li>
+                    <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
+                    <li>Realizacja projektu AdTech na rynek PL, UE, USA.</li>
+                    <li>Prowadzenie zespo&#322;&#243;w rozproszonych i usprawnianie komunikacji.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">Marketing</span>
+                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                    <span class="timeline-highlight">Product Manager</span>
+                    <span class="timeline-highlight">Product Backlog Management</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">03.2018 - 06.2020</div>
+            <div class="timeline-content">
+                <div class="timeline-role">Marketing Manager</div>
+                <div class="timeline-company">ADS4Help sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">7+ mln z&#322; (&#322;&#261;cznie)</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">8 OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">-</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, Allegro, Empik, Amazon, SEO, E-mail</div>
+                <p class="timeline-note">Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w oraz zarz&#261;dzanie zespo&#322;em 8-osobowym.</p>
+                <ul class="timeline-achievements">
+                    <li>Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w.</li>
+                    <li>Zarz&#261;dzanie zespo&#322;em 8-osobowym.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">Marketing</span>
+                    <span class="timeline-highlight">E-commerce</span>
+                    <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">11.2016 - 02.2018</div>
+            <div class="timeline-content">
+                <div class="timeline-role">Performance Marketing Specialist</div>
+                <div class="timeline-company">Health Nation sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">1+ mln z&#322;</span></div>
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">4 OS&#211;B</span></div>
+                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">1</span></div>
+                </div>
+                <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, LinkedIn, SEO, E-mail, SMS</div>
+                <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Siedziby korporacji</div>
+                <p class="timeline-note">Realizacja za&#322;o&#380;e&#324; firmy poprzez wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL wraz z marketingiem. Pozyskiwanie i wsp&#243;&#322;praca bezpo&#347;rednia z merchantami, klientami kluczowymi oraz korporacjami.</p>
+                <ul class="timeline-achievements">
+                    <li>Wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL.</li>
+                    <li>Pozyskiwanie i wsp&#243;&#322;praca z merchantami oraz klientami kluczowymi.</li>
+                    <li>Realizacja dzia&#322;a&#324; marketingowych online i offline.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">Marketing</span>
+                    <span class="timeline-highlight">Product Manager</span>
+                    <span class="timeline-highlight">End-to-End</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2014 - 2016</div>
+            <div class="timeline-content">
+                <div class="timeline-role">Team Leader</div>
+                <div class="timeline-company">Alior Bank <span class="timeline-location">Krak&#243;w</span></div>
+                <div class="timeline-stats">
+                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">5 OS&#211;B</span></div>
+                </div>
+                <p class="timeline-note">Kierowanie 5-osobowym zespo&#322;em przy procesie weryfikacji kredyt&#243;w dla klient&#243;w.</p>
+                <ul class="timeline-achievements">
+                    <li>Kierowanie 5-osobowym zespo&#322;em.</li>
+                    <li>Weryfikacja kredyt&#243;w dla klient&#243;w.</li>
+                </ul>
+                <div class="timeline-highlights">
+                    <span class="timeline-highlight">Sprzeda&#380;</span>
+                    <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
+                    <span class="timeline-highlight">Outcome-Driven</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="page-footer-info">
+        <div class="page-label">Professional Journey</div>
+        <div class="page-number">03 / 09</div>
+    </div>
+</section>
+
+    <!-- Strona 2c -->
+    <section class="page page-edu" id="pageEdu">
         <div class="page-decor">
             <div class="grid-pattern grid-pattern--light"></div>
         </div>
-        <div class="header-section">
-            <div>
-                <div class="page-title">Doświadczenie</div>
-                <div class="header-caption">Od Specialist do General Director</div>
+        <div class="page-body">
+            <div class="header-section">
+                <div>
+                    <div class="page-title">Wykszta&#322;cenie</div>
+                    <div class="header-caption">Education</div>
+                </div>
             </div>
-            <div class="page-subtitle">11 lat w biznesie</div>
-        </div>
 
-        <div class="timeline-container">
-            <div class="timeline-track">
-            <div class="timeline-item">
-                <div class="timeline-year">09.2024 - OBECNIE</div>
-                <div class="timeline-content">
-                    <span class="parallel-badge">RÓWNOLEGLE</span>
-                    <div class="timeline-role">General Marketing Director</div>
-                    <div class="timeline-company">Zapakujemy.pl sp. z o.o.</div>
-                    <p class="timeline-note">Kierowanie całościową strategią wzrostu i transformacją cyfrową marki.</p>
-                    <ul class="timeline-achievements">
-                        <li>Skalowanie e-commerce i optymalizacja B2B/B2C.</li>
-                        <li>Wdrażanie AI i automatyzacji marketingu.</li>
-                        <li>Zarządzanie budżetami mediowymi 500k+.</li>
-                        <li>Analityka predykcyjna w sprzedaży.</li>
-                    </ul>
-                    <div class="timeline-highlights">
-                        <span class="timeline-highlight">AI Integration</span>
-                        <span class="timeline-highlight">Scale-up Strategy</span>
+            <div class="education-list">
+                <div class="education-item">
+                    <div class="education-date">10.2016 &ndash; 08.2018</div>
+                    <div class="education-details">
+                        <div class="education-school">Wy&#380;sza Szko&#322;a Zarz&#261;dzania i Bankowo&#347;ci w Krakowie</div>
+                        <div class="education-field">Kierunek: zarz&#261;dzanie i marketing | Specjalizacja: Zarz&#261;dzanie Strategiczne Marketingiem Online</div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">11.2024 - 12.2025</div>
-                <div class="timeline-content">
-                    <span class="parallel-badge">RÓWNOLEGLE</span>
-                    <div class="timeline-role">General Marketing Director</div>
-                    <div class="timeline-company">ISO TRADE sp. z o.o.</div>
-                    <p class="timeline-note">Budowanie strategii marketingowej dla firmy handlowej oraz rozwój kanałów sprzedaży.</p>
-                    <ul class="timeline-achievements">
-                        <li>Budowa i egzekucja strategii marketingowej dla segmentu B2B.</li>
-                        <li>Optymalizacja kampanii sprzedażowych i działań trade marketing.</li>
-                        <li>Rozwój kanałów sprzedaży oraz wsparcie procesów handlowych.</li>
-                    </ul>
-                    <div class="timeline-highlights">
-                        <span class="timeline-highlight">Strategia B2B</span>
-                        <span class="timeline-highlight">Marketing trade</span>
+
+                <div class="education-item">
+                    <div class="education-date">10.2012 &ndash; 02.2016</div>
+                    <div class="education-details">
+                        <div class="education-school">Akademia G&#243;rniczo-Hutnicza im. Stanis&#322;awa Staszica w Krakowie</div>
+                        <div class="education-field">Kierunek: metalurgia | Specjalizacja: In&#380;ynieria Materia&#322;owa na Wydziale Metali Nie&#380;elaznych</div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">11.2020 - 05.2025</div>
-                <div class="timeline-content">
-                    <div class="timeline-role">General Director / CMO</div>
-                    <div class="timeline-company">Just be FIT sp. z o.o.</div>
-                    <p class="timeline-note">Kompleksowe zarządzanie firmą, rebranding i skalowanie sprzedaży e-commerce w sektorze fitness i zdrowia.</p>
-                    <ul class="timeline-achievements">
-                        <li>Zarządzanie firmą oraz strategiczny nadzór nad rozwojem.</li>
-                        <li>Rebranding i wzmocnienie pozycjonowania marki.</li>
-                        <li>Skalowanie sprzedaży e-commerce w segmencie fitness i zdrowia.</li>
-                    </ul>
-                    <div class="timeline-highlights">
-                        <span class="timeline-highlight">Zarządzanie firmą</span>
-                        <span class="timeline-highlight">Rebranding</span>
-                        <span class="timeline-highlight">Skalowanie sprzedaży</span>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
         <div class="page-footer-info">
-            <div class="page-label">Professional Journey</div>
-            <div class="page-number">02 / 09</div>
-        </div>
-    </section>
-
-    <!-- Strona 2b -->
-    <section class="page page-2" id="page2b">
-        <div class="page-decor">
-            <div class="grid-pattern grid-pattern--light"></div>
-        </div>
-        <div class="header-section">
-            <div>
-                <div class="page-title">Doświadczenie</div>
-                <div class="header-caption">Od Specialist do General Director</div>
-            </div>
-            <div class="page-subtitle">11 lat w biznesie</div>
-        </div>
-
-        <div class="timeline-container">
-            <div class="timeline-track">
-            
-            <div class="timeline-item">
-                <div class="timeline-year">01.2022 - 02.2024</div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Global Director</div>
-                    <div class="timeline-company">FULL HELP sp. z o.o.</div>
-                    <p class="timeline-note">Ekspansja na rynki zagraniczne, zarządzanie budżetami mediowymi i zespołami rozproszonymi.</p>
-                    <ul class="timeline-achievements">
-                        <li>Ekspansja na rynki zagraniczne i koordynacja projektów międzynarodowych.</li>
-                        <li>Zarządzanie budżetami mediowymi oraz efektywnością kampanii.</li>
-                        <li>Prowadzenie zespołów rozproszonych i usprawnianie komunikacji.</li>
-                    </ul>
-                    <div class="timeline-highlights">
-                        <span class="timeline-highlight">Ekspansja międzynarodowa</span>
-                        <span class="timeline-highlight">Zespoły rozproszone</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-year">START (2014-2016)</div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Team Leader & Specialist</div>
-                    <div class="timeline-company">Alior Bank / Health Nation</div>
-                    <p class="timeline-note">Solidne fundamenty w sprzedaży, zarządzaniu zespołem i analityce finansowej.</p>
-                    <ul class="timeline-achievements">
-                        <li>Rozwój kompetencji sprzedażowych i obsługa klientów.</li>
-                        <li>Zarządzanie zespołem i realizacja celów sprzedażowych.</li>
-                        <li>Analityka finansowa oraz raportowanie wyników.</li>
-                    </ul>
-                    <div class="timeline-highlights">
-                        <span class="timeline-highlight">Sprzedaż</span>
-                        <span class="timeline-highlight">Zarządzanie zespołem</span>
-                        <span class="timeline-highlight">Analityka</span>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <div class="footer-strip">
-            <span><strong>EDUKACJA:</strong> AGH Akademia Górniczo-Hutnicza</span>
-            <span class="divider">|</span>
-            <span>WSZiB Wyższa Szkoła Zarządzania i Bankowości</span>
-        </div>
-        <div class="page-footer-info">
-            <div class="page-label">Professional Journey</div>
-            <div class="page-number">03 / 09</div>
+            <div class="page-label">Education</div>
+            <div class="page-number">04 / 09</div>
         </div>
     </section>
 
@@ -2502,7 +2541,7 @@
                     </div>
                     <div>
                         <h4>Zespoły Rozproszone</h4>
-                        <p>Efektywne zarządzanie zespołami zdalnymi (10+ osób) przy użyciu Asana/Jira i metodyki Agile. Doświadczenie w koordynacji projektów międzynarodowych.</p>
+                        <p>Efektywne zarządzanie zespołami zdalnymi (10+ osób) przy użyciu ClickUp i metodyki Agile. Doświadczenie w koordynacji projektów międzynarodowych.</p>
                     </div>
                 </div>
                 
@@ -2529,7 +2568,7 @@
         </div>
         <div class="page-footer-info">
             <div class="page-label">Leadership DNA</div>
-            <div class="page-number">04 / 09</div>
+            <div class="page-number">05 / 09</div>
         </div>
     </section>
 
@@ -2577,7 +2616,7 @@
                 <div class="case-study-card">
                     <div>
                         <div class="metric-label">Wzrost przychodów</div>
-                        <div class="metric-value gold-gradient-text">+300%</div>
+                        <div class="metric-value gold-gradient-text">+314%</div>
                     </div>
                     <div class="metric-icon" aria-hidden="true">
                         <i class="fas fa-chart-line"></i>
@@ -2587,7 +2626,7 @@
                 <div class="case-study-card">
                     <div>
                         <div class="metric-label">Średni ROAS</div>
-                        <div class="metric-value gold-gradient-text">32.56</div>
+                        <div class="metric-value gold-gradient-text">32+</div>
                     </div>
                     <div class="metric-icon metric-icon--gold" aria-hidden="true">
                         <i class="fas fa-star"></i>
@@ -2605,6 +2644,10 @@
                 </div>
 
                 <div class="case-study-highlight">
+                    <div class="case-study-highlight-label">Ruch organiczny 2024</div>
+                    <div class="case-study-highlight-text">RUCH ORGANICZNY NA STRONIE ROK 2024: 33.4 mln</div>
+                </div>
+                <div class="case-study-highlight">
                     <div class="case-study-highlight-label">Kluczowy sukces</div>
                     <div class="case-study-highlight-text">Efekt dźwigni: AI + automatyzacja + zespół growth = 1.1 mln+ przychodu i CAC -40%.</div>
                 </div>
@@ -2612,7 +2655,7 @@
         </div>
         <div class="page-footer-info">
             <div class="page-label">Case Study</div>
-            <div class="page-number">05 / 09</div>
+            <div class="page-number">06 / 09</div>
         </div>
     </section>
 
@@ -2626,14 +2669,15 @@
                         <span class="tech-badge" style="background: var(--gold-accent); color: #000;">LLM / ChatGPT</span>
                         <span class="tech-badge">Marketing Automation AI</span>
                         <span class="tech-badge">Analiza Predykcyjna</span>
-                        <span class="tech-badge">Salesmanago AI</span>
-                        <span class="tech-badge">Chatboty</span>
                     </div>
                 </div>
 
                 <div class="tech-box">
                     <div class="tech-title">Ads Ecosystem</div>
                     <div class="tech-badges">
+                        <span class="tech-badge" style="background: var(--gold-accent); color: #000;">Allegro Ads</span>
+                        <span class="tech-badge" style="background: var(--gold-accent); color: #000;">Empik Ads</span>
+                        <span class="tech-badge" style="background: var(--gold-accent); color: #000;">Amazon Ads</span>
                         <span class="tech-badge">Google Ads</span>
                         <span class="tech-badge">Meta Ads (FB/IG)</span>
                         <span class="tech-badge">TikTok Ads</span>
@@ -2647,6 +2691,10 @@
                     <div class="tech-badges">
                         <span class="tech-badge">Allegro Ads</span>
                         <span class="tech-badge">Amazon</span>
+                        <span class="tech-badge">Empik</span>
+                        <span class="tech-badge">Erli</span>
+                        <span class="tech-badge">Temu</span>
+                        <span class="tech-badge">Morele</span>
                         <span class="tech-badge">WooCommerce</span>
                         <span class="tech-badge">Magento</span>
                         <span class="tech-badge">Shopify</span>
@@ -2660,7 +2708,12 @@
                         <span class="tech-badge">Salesmanago</span>
                         <span class="tech-badge">Baselinker</span>
                         <span class="tech-badge">ERP Optima</span>
-                        <span class="tech-badge">Jira / Asana</span>
+                        <span class="tech-badge">ClickUp</span>
+                        <span class="tech-badge">Getresponse</span>
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">Mailerlite</span>
+                        <span class="tech-badge">Mailchimp</span>
+                        <span class="tech-badge">Smsapi</span>
                         <span class="tech-badge">GA4 / GTM</span>
                     </div>
                 </div>
@@ -2682,57 +2735,6 @@
         </div>
         <div class="page-footer-info">
             <div class="page-label">Skill Stack</div>
-            <div class="page-number">06 / 09</div>
-        </div>
-    </section>
-
-    <!-- Strona 6 -->
-    <section class="page page-6 page--dark" id="page6">
-        <div class="page-decor">
-            <div class="grid-pattern grid-pattern--dark"></div>
-            <div class="orb orb--center"></div>
-        </div>
-        <div class="dashboard-header">
-            <div class="page-title">Wyniki & Analityka</div>
-            <div class="dashboard-subtitle">Data Driven Decisions</div>
-        </div>
-
-        <div class="dashboard-container">
-            <div class="dash-panel">
-                <div class="panel-header">
-                    <span class="panel-title">Google Search Console</span>
-                    <span class="panel-kpi">▲ +125% YoY</span>
-                </div>
-                <div class="stat-big">33.4M <span class="stat-unit">Impressions</span></div>
-                <div class="chart-area">
-                    <canvas id="gscChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-
-            <div class="dash-panel">
-                <div class="panel-header">
-                    <span class="panel-title">Allegro Sales</span>
-                    <span class="panel-kpi">GMV 23.8M PLN</span>
-                </div>
-                <div class="stat-big">856K <span class="stat-unit">Clicks</span></div>
-                <div class="chart-area">
-                    <canvas id="allegroChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-
-            <div class="dash-panel wide">
-                <div class="panel-info">
-                    <div class="panel-title">Google Ads Performance</div>
-                    <div class="stat-big stat-gold gold-gradient-text">ROAS 32.56</div>
-                    <p class="panel-note">Maksymalizacja zwrotu z inwestycji przy skalowaniu budżetu. Kampanie zoptymalizowane pod konwersje i wartość sprzedaży.</p>
-                </div>
-                <div class="chart-area panel-chart">
-                    <canvas id="googleAdsChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="page-footer-info">
-            <div class="page-label">Results & Analytics</div>
             <div class="page-number">07 / 09</div>
         </div>
     </section>
@@ -2775,7 +2777,7 @@
 
         <div class="strategy-box">
             <strong>Marketing Automation & CRM:</strong>
-            Kluczem do sukcesu nie jest tylko pozyskanie leada, ale jego utrzymanie. Łączę dane z CRM z automatyzacją, aby budować LTV klienta. Implementacja Salesmanago zwiększyła retencję o 35% w ciągu 6 miesięcy.
+            Kluczem do sukcesu nie jest tylko pozyskanie leada, ale jego utrzymanie. Łączę dane z CRM z automatyzacją, aby budować LTV klienta. Implementacja odpowiednich narz&#281;dzi znacz&#261;co zwi&#281;ksza efektywno&#347;&#263; i wyniki firmy.
         </div>
         <div class="page-footer-info">
             <div class="page-label">Sales Booster</div>
@@ -2799,6 +2801,7 @@
         <div class="contact-data">
             <div class="thank-you">Dziękuję za uwagę.</div>
             <div class="cta-header">Porozmawiajmy o skalowaniu Twojego biznesu.</div>
+            <div class="contact-message">Porozmawiajmy o mojej roli u Pa&#324;stwa w firmie.</div>
 
             <div class="contact-card" role="button" tabindex="0" aria-label="Zadzwoń do Marcina Lubery" onclick="window.location.href='tel:+48722197109';" onkeypress="if(event.key === 'Enter') window.location.href='tel:+48722197109';">
                 <div class="contact-icon" aria-hidden="true">
@@ -2819,6 +2822,16 @@
                     <div class="contact-text">marcinjbf@gmail.com</div>
                 </div>
             </div>
+
+            <div class="contact-card" role="button" tabindex="0" aria-label="Data urodzenia Marcina Lubery">
+                <div class="contact-icon" aria-hidden="true">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div>
+                    <div class="contact-label">Data urodzenia</div>
+                    <div class="contact-text">05.10.1992</div>
+                </div>
+            </div>
             
             <div class="contact-card" role="button" tabindex="0" aria-label="Lokalizacja Marcina Lubery">
                 <div class="contact-icon" aria-hidden="true">
@@ -2826,7 +2839,7 @@
                 </div>
                 <div>
                     <div class="contact-label">Lokalizacja</div>
-                    <div class="contact-text">Kraków / praca zdalna</div>
+                    <div class="contact-text">Krak&#243;w / praca zdalna / relokacja</div>
                 </div>
             </div>
 
@@ -2842,9 +2855,9 @@
     </section>
 
     <script>
-        // Nawigacja między stronami
-        const pages = document.querySelectorAll('.page');
-        const progressDots = document.querySelectorAll('.progress-dot');
+        // Page navigation
+        const pages = Array.from(document.querySelectorAll('.page'));
+        const progressDots = Array.from(document.querySelectorAll('.progress-dot'));
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
         const downloadBtn = document.getElementById('downloadBtn');
@@ -2855,78 +2868,111 @@
         
         let currentPage = 0;
         
-        function updateNavigation() {
+        function updateNavUI() {
             // Aktualizuj aktywne kropki
             progressDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentPage);
             });
             
-            // Ukryj/pokaż przyciski nawigacji
-            prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
-            nextBtn.style.visibility = currentPage === pages.length - 1 ? 'hidden' : 'visible';
-            
-            // Przewiń do aktywnej strony
-            pages[currentPage].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Ukryj/pokaz przyciski nawigacji
+            if (prevBtn) {
+                prevBtn.style.visibility = currentPage === 0 ? 'hidden' : 'visible';
+            }
+            if (nextBtn) {
+                nextBtn.style.visibility = currentPage === pages.length - 1 ? 'hidden' : 'visible';
+            }
+        }
+
+        function scrollToCurrentPage() {
+            const page = pages[currentPage];
+            if (!page) {
+                return;
+            }
+            page.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function setCurrentPage(index, shouldScroll = true) {
+            if (index < 0 || index >= pages.length) {
+                return;
+            }
+            currentPage = index;
+            updateNavUI();
+            if (shouldScroll) {
+                scrollToCurrentPage();
+            }
         }
         
-        // Przejdź do konkretnej strony
+        // Go to a specific page
         function goToPage(index) {
-            if (index >= 0 && index < pages.length) {
-                currentPage = index;
-                updateNavigation();
-            }
+            setCurrentPage(index);
         }
         
-        // Przejdź do następnej strony
+        // Next page
         function nextPage() {
-            if (currentPage < pages.length - 1) {
-                currentPage++;
-                updateNavigation();
-            }
+            setCurrentPage(currentPage + 1);
         }
         
-        // Przejdź do poprzedniej strony
+        // Previous page
         function prevPage() {
-            if (currentPage > 0) {
-                currentPage--;
-                updateNavigation();
-            }
+            setCurrentPage(currentPage - 1);
         }
         
-        // Obsługa kliknięcia na kropki
+        // Dots click handling
         progressDots.forEach((dot, index) => {
             dot.addEventListener('click', () => goToPage(index));
         });
         
-        // Obsługa przycisków nawigacji
-        prevBtn.addEventListener('click', prevPage);
-        nextBtn.addEventListener('click', nextPage);
+        // Arrow buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevPage);
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextPage);
+        }
         
-        // Obsługa klawiatury
+        // Keyboard
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') prevPage();
             if (e.key === 'ArrowRight') nextPage();
         });
 
-        // Scroll tylko wewnątrz osi czasu (bez przewijania całej strony)
+        // Sync navigation when user scrolls manually
+        if ('IntersectionObserver' in window && pages.length) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    const index = pages.indexOf(entry.target);
+                    if (index !== -1 && index !== currentPage) {
+                        currentPage = index;
+                        updateNavUI();
+                    }
+                });
+            }, { threshold: 0.6 });
+
+            pages.forEach((page) => observer.observe(page));
+        }
+
+        // Allow wheel only inside timeline containers
         if (timelineContainers.length) {
             timelineContainers.forEach((container) => {
                 container.addEventListener('wheel', (event) => {
-                    event.stopPropagation();
                     const { scrollTop, scrollHeight, clientHeight } = container;
                     const delta = event.deltaY;
                     const atTop = scrollTop <= 0;
                     const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
                     if ((delta < 0 && atTop) || (delta > 0 && atBottom)) {
-                        event.preventDefault();
+                        return;
                     }
-                }, { passive: false });
+                    event.stopPropagation();
+                }, { passive: true });
             });
         }
 
-        // Inicjalizacja nawigacji
-        updateNavigation();
+        // Init navigation
+        updateNavUI();
         
         // Przycisk pobierania PDF
         async function exportToPdf() {
@@ -3049,160 +3095,7 @@
             }
         });
         
-        // Inicjalizacja wykresów
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wykres GSC
-            const gscCtx = document.getElementById('gscChart').getContext('2d');
-            new Chart(gscCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
-                    datasets: [{
-                        label: 'Wyświetlenia (mln)',
-                        data: [2.1, 2.4, 2.8, 3.2, 3.8, 4.5, 5.2, 6.1, 7.3, 8.5, 10.2, 33.4],
-                        borderColor: 'rgba(59, 130, 246, 0.9)',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    animation: false, // PDF: disable chart draw animation
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)'
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Wykres Allegro
-            const allegroCtx = document.getElementById('allegroChart').getContext('2d');
-            new Chart(allegroCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    datasets: [{
-                        label: 'Sprzedaż (tys. PLN)',
-                        data: [450, 620, 830, 1120],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(96, 165, 250, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(96, 165, 250, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    animation: false, // PDF: disable chart draw animation
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: 'rgba(255, 255, 255, 0.7)'
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Wykres Google Ads
-            const googleAdsCtx = document.getElementById('googleAdsChart').getContext('2d');
-            new Chart(googleAdsCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Sprzedaż', 'Koszt', 'Zysk'],
-                    datasets: [{
-                        data: [71674, 5382, 66292],
-                        backgroundColor: [
-                            'rgba(212, 175, 55, 0.8)',
-                            'rgba(59, 130, 246, 0.8)',
-                            'rgba(16, 185, 129, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(212, 175, 55, 1)',
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(16, 185, 129, 1)'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    animation: false, // PDF: disable chart draw animation
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: 'rgba(255, 255, 255, 0.7)',
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    label += new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'PLN' }).format(context.raw);
-                                    return label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Interaktywne kroki procesu
+        // Interaktywne kroki procesu
             const processSteps = document.querySelectorAll('.process-step');
             processSteps.forEach(step => {
                 step.addEventListener('click', function() {
@@ -3274,22 +3167,49 @@
             });
         });
         
-        // Obsługa przewijania myszą/kółkiem
-        let scrollTimeout;
+        // Obsluga przewijania myszka/kolem
+        const scrollThreshold = 60;
+        const scrollCooldown = 700;
+        let lastScrollTime = 0;
+
+        function getScrollableParent(target) {
+            let node = target;
+            while (node && node !== document.body) {
+                const style = window.getComputedStyle(node);
+                const canScroll = (style.overflowY === 'auto' || style.overflowY === 'scroll') &&
+                    node.scrollHeight > node.clientHeight;
+                if (canScroll) {
+                    return node;
+                }
+                node = node.parentElement;
+            }
+            return null;
+        }
+
         document.addEventListener('wheel', function(e) {
-            if (e.target.closest('.timeline-container')) {
+            const scrollable = getScrollableParent(e.target);
+            if (scrollable) {
+                const atTop = scrollable.scrollTop <= 0;
+                const atBottom = scrollable.scrollTop + scrollable.clientHeight >= scrollable.scrollHeight - 1;
+                if ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)) {
+                    return;
+                }
+            }
+            if (Math.abs(e.deltaY) < scrollThreshold) {
                 return;
             }
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(function() {
-                if (e.deltaY > 0) {
-                    nextPage();
-                } else if (e.deltaY < 0) {
-                    prevPage();
-                }
-            }, 100);
+            const now = Date.now();
+            if (now - lastScrollTime < scrollCooldown) {
+                return;
+            }
+            lastScrollTime = now;
+            if (e.deltaY > 0) {
+                nextPage();
+            } else if (e.deltaY < 0) {
+                prevPage();
+            }
         }, { passive: true });
-        
+
         // Dodatkowe funkcje
         function showQuickContact() {
             const quickContact = document.createElement('div');
@@ -3310,7 +3230,7 @@
                 backdrop-filter: blur(12px);
             `;
             quickContact.innerHTML = `
-                <h4 style="margin: 0 0 6px 0; color: var(--gold-accent); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700;">Szybki kontakt</h4>
+                <h4 style="margin: 0 0 6px 0; color: var(--gold-accent); font-size: 12px; letter-spacing: 1px; text-transform: none; font-weight: 700;">KONTAKT DO MNIE: Ch&#281;tnie odpowiem na ka&#380;de pytanie</h4>
                 <p style="font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.85); margin: 0 0 14px 0; font-weight: 300;">Jesteś zainteresowany współpracą?</p>
                 <div style="display: flex; gap: 10px;">
                     <button onclick="window.location.href='tel:+48722197109'" style="
