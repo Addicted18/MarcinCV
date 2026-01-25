@@ -249,6 +249,7 @@
             break-after: page;
             scroll-margin-top: 20px;
             padding: 0 !important;
+            word-spacing: 1px;
         }
 
         .page:nth-of-type(2) { animation-delay: 0.05s; }
@@ -369,6 +370,12 @@
         .page--dark .page-number { color: var(--white); }
         .page--dark .page-number::before { background: var(--gold-accent); }
 
+        .page-7 .page-footer-info {
+            margin-top: auto;
+            align-items: flex-end;
+            padding-bottom: 14px;
+        }
+
         .eyebrow {
             font-size: 12px;
             letter-spacing: 4px;
@@ -435,46 +442,79 @@
 
         .page-1 .page-body {
             display: grid;
-            grid-template-columns: 40% 60%;
-            padding: 0;
+            grid-template-rows: 1.1fr 0.9fr;
+            padding: 28px 32px 32px;
+            gap: 18px;
         }
 
-        .p1-left {
+        .p1-hero {
             position: relative;
+            border-radius: 18px;
+            overflow: hidden;
             background: var(--navy);
-            overflow: hidden;
-            padding: 0 !important;
-        }
-
-        .p1-left::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, 0.65) 100%);
-            z-index: 2;
-        }
-
-        .p1-photo {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            overflow: hidden;
             isolation: isolate;
         }
 
-        .p1-photo::after {
+        .p1-hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(circle at center, transparent 50%, var(--navy) 100%),
-                linear-gradient(to top, var(--navy) 0%, transparent 40%);
-            pointer-events: none;
+            background: linear-gradient(180deg, rgba(2, 6, 23, 0.1) 0%, rgba(2, 6, 23, 0.55) 100%);
+            z-index: 2;
+        }
+
+        .p1-hero-tag {
+            position: absolute;
+            right: 18px;
+            bottom: 16px;
+            background: #7a1a14;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            z-index: 3;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .p1-lower {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr;
+            gap: 18px;
+            min-height: 0;
+        }
+
+        .p1-panel {
+            /* background: #0b1120; */
+            color: var(--white);
+            border-radius: 18px;
+            padding: 22px 24px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p1-panel::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -40px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 70%);
+            opacity: 0.6;
+        }
+
+        .p1-role-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            position: relative;
             z-index: 1;
         }
 
@@ -497,7 +537,7 @@
         }
 
         .photo-placeholder-img.loaded {
-            opacity: 0.9;
+            opacity: 0.92;
         }
 
         .photo-placeholder-img.loaded + .photo-placeholder-fallback {
@@ -558,76 +598,125 @@
             color: var(--gold-accent);
         }
 
-        .p1-right {
-            padding: 74px 64px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         .p1-name {
-            font-size: 82px;
+            font-size: 52px;
             line-height: 0.9;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: -4px;
+            letter-spacing: -2px;
             color: var(--white);
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             text-shadow: none;
         }
 
         .p1-role {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 28px;
+            font-size: 16px;
             color: var(--gold-accent);
-            margin-bottom: 26px;
+            margin-bottom: 0;
             position: relative;
-            padding-left: 18px;
-            border-left: 3px solid var(--blue-accent);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
         }
 
         .p1-experience {
             font-family: 'Outfit', sans-serif;
             font-style: normal;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.75);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
         }
 
         .p1-quote-box {
-            border-radius: 0 20px 0 20px;
-            padding: 28px;
+            border-radius: 14px;
+            padding: 14px 16px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 1;
         }
 
         .p1-quote {
-            font-size: 16px;
-            color: var(--text-grey);
-            line-height: 1.6;
-            margin-bottom: 14px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 6px;
+            font-style: italic;
         }
 
         .p1-tag {
-            font-size: 11px;
+            font-size: 9px;
             color: var(--gold-accent);
             text-transform: uppercase;
             letter-spacing: 3px;
+            margin-bottom: 10px;
         }
 
         .p1-summary {
-            margin-top: 16px;
-            font-size: 14px;
-            color: #cbd5e1;
+            margin-top: 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
         }
 
         .p1-highlight {
             color: var(--white);
             font-weight: 600;
+        }
+
+        .p1-contact {
+            /* background: #0b1120; */
+            color: var(--white);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .p1-contact .contact-message {
+            margin: 0 0 6px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .p1-contact .contact-card {
+            margin-bottom: 8px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            gap: 14px;
+        }
+
+        .p1-contact .contact-card:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .p1-contact .contact-icon {
+            width: 34px;
+            height: 34px;
+        }
+
+        .p1-contact .contact-label {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .p1-contact .contact-text {
+            font-size: 13px;
+        }
+
+        .p1-contact .contact-note {
+            margin-top: 4px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.65);
         }
 
         /* Page 2 */
@@ -643,10 +732,10 @@
         }
 
         .page-2 .header-section,
-        .page-2 .timeline-container,
+        .page-2 .timeline,
         .page-2 .footer-strip {
-            margin-left: 80px;
-            margin-right: 80px;
+            margin-left: 60px;
+            margin-right: 60px;
         }
 
         .header-section {
@@ -673,104 +762,264 @@
         }
 
         .page-edu .header-section,
-        .page-edu .education-list {
+        .page-edu .education-card,
+        .page-edu .education-divider {
             margin-left: 80px;
             margin-right: 80px;
         }
 
-        .education-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-top: 6px;
-        }
-
-        .education-item {
-            display: grid;
-            grid-template-columns: 190px 1fr;
-            gap: 24px;
-            align-items: flex-start;
-            padding: 18px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .education-item:last-child {
+        .page-edu .header-section {
             border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 12px;
         }
 
-        .education-date {
-            font-size: 12px;
-            font-weight: 800;
+        .page-edu .page-title {
+            font-size: 46px;
+        }
+
+        .page-edu .header-caption {
+            color: var(--gold-accent);
+            letter-spacing: 5px;
+        }
+
+        .education-inline {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .education-inline .header-section {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 12px;
+        }
+
+        .education-inline .page-title {
+            font-size: 32px;
+        }
+
+        .education-inline .header-caption {
+            color: var(--gold-accent);
+            letter-spacing: 5px;
+        }
+
+        .education-inline .education-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 28px;
+            padding: 0;
+            border-radius: 20px;
+        }
+
+        .education-inline .education-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 16px;
+            padding: 8px 0;
+            align-items: start;
+        }
+
+        .education-inline .education-row + .education-row {
+            margin-top: 8px;
+            padding-top: 0;
+        }
+
+        /* Bubble wrapper: ultra-minimal */
+        .education-bubble {
+            background: transparent;
+            border-left: 3px solid var(--gold-accent);
+            border-radius: 0;
+            padding: 10px 14px;
+            box-shadow: none;
+            break-inside: avoid-column;
+            min-height: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .education-bubble .education-row {
+            display: block;
+            padding: 0;
+            gap: 0;
+        }
+
+        .education-bubble .education-period {
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            color: var(--text-soft);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .education-bubble .education-degree {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .education-bubble .education-meta {
+            display: block;
+            font-size: 10px;
+            color: var(--text-soft);
+            line-height: 1.4;
+            margin-bottom: 3px;
+        }
+
+        .education-bubble .education-meta-label {
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+            display: inline;
+            margin-right: 2px;
+        }
+
+        .education-bubble .education-meta-label i {
+            display: none;
+        }
+
+        .education-bubble + .education-bubble {
+            margin-top: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .education-inline .education-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .education-divider {
+            display: none;
+        }
+
+        .education-card {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+            grid-auto-rows: 1fr; /* equal height */
+            position: relative;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--gold-accent), var(--blue-accent));
+        }
+
+        .education-card::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -20px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 70%);
+            pointer-events: none;
+        }
+
+        .education-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 28px;
+            align-items: start;
+            padding: 12px 0;
+        }
+
+        .education-row + .education-row {
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            margin-top: 12px;
+            padding-top: 20px;
+        }
+
+        .education-period {
+            font-size: 11px;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--text-grey);
-            text-align: right;
             line-height: 1.4;
         }
 
-        .education-details {
-            background: #fff;
-            border-left: 3px solid var(--navy);
-            padding: 16px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        .education-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 0;
         }
 
-        .education-school {
+        .education-degree {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 16px;
-            color: var(--gold-accent);
-            margin-bottom: 8px;
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 2px;
         }
 
-        .education-field {
+        .education-meta {
+            display: grid;
+            grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
+            gap: 10px;
             font-size: 12px;
             color: var(--text-soft);
             line-height: 1.6;
         }
 
-        .timeline-container {
-            --timeline-gutter: 56px;
-            --timeline-line-x: 26px;
+        .education-meta-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-grey);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        .education-meta-label i {
+            font-size: 11px;
+            color: var(--gold-accent);
+            opacity: 0.85;
+        }
+
+        .education-meta > span {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .timeline {
+            --timeline-gutter: 44px;
+            --timeline-line-x: 20px;
             --timeline-dot: 12px;
-            --timeline-year-width: 150px;
+            --timeline-year-width: 135px;
             position: relative;
             flex: 1 1 auto;
             min-height: 0;
-            overflow-y: auto;
-            scrollbar-gutter: stable;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(59, 130, 246, 0.6) transparent;
-            overscroll-behavior: contain;
         }
 
         .timeline-track {
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 10px;
-            padding: 10px 12px 6px var(--timeline-gutter);
+            gap: 16px;
+            margin-top: 8px;
+            padding: 8px 0 6px var(--timeline-gutter);
             min-height: 100%;
-        }
-
-        .timeline-container::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .timeline-container::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.08);
-            border-radius: 999px;
-        }
-
-        .timeline-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.7), rgba(96, 165, 250, 0.5));
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        .timeline-container::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.9), rgba(96, 165, 250, 0.7));
         }
 
         .timeline-track::before {
@@ -786,7 +1035,7 @@
         .timeline-item {
             display: grid;
             grid-template-columns: var(--timeline-year-width) 1fr;
-            gap: 24px;
+            gap: 18px;
             align-items: flex-start;
             position: relative;
             min-width: 0;
@@ -808,7 +1057,7 @@
         }
 
         .timeline-year {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -821,31 +1070,31 @@
         }
 
         .timeline-content {
-            flex: 1;
-            background: #fff;
-            border: none;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(15, 23, 42, 0.08);
             border-left: 3px solid var(--navy);
-            padding: 18px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-radius: 14px;
+            padding: 20px 22px 16px;
+            box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
             position: relative;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.35s ease;
             min-width: 0;
             overflow-wrap: anywhere;
         }
 
         .timeline-content:hover {
             border-left-color: var(--gold-accent);
-            transform: translateX(10px);
-            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.1);
+            transform: translateX(4px);
+            box-shadow: 0 18px 34px rgba(59, 130, 246, 0.12);
         }
 
         .timeline-role {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--navy);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
 
         .timeline-company {
@@ -856,7 +1105,7 @@
             margin-bottom: 8px;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             align-items: baseline;
         }
 
@@ -873,53 +1122,75 @@
         .timeline-stats {
             margin: 10px 0 8px;
             display: grid;
-            gap: 4px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 6px;
         }
 
         .timeline-stat {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 800;
+            flex-direction: column;
+            gap: 3px;
+            padding: 6px 8px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            font-size: 8px;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #dc2626;
+            color: var(--text-soft);
+        }
+
+        .timeline-item--compact .timeline-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .timeline-item--compact .timeline-note {
+            margin-bottom: 6px;
+        }
+
+        .timeline-item--compact .timeline-achievements {
+            grid-template-columns: 1fr;
         }
 
         .timeline-stat-value {
-            color: #b91c1c;
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--navy);
         }
 
         .parallel-badge {
             position: absolute;
             top: 10px;
-            right: 15px;
+            right: 12px;
             background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
             color: var(--navy);
             font-size: 8px;
             font-weight: 800;
             padding: 3px 8px;
-            border-radius: 0;
-            letter-spacing: 2px;
+            border-radius: 999px;
+            letter-spacing: 1px;
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            z-index: 2;
         }
 
         .timeline-note {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-soft);
-            line-height: 1.6;
-            margin-bottom: 10px;
+            line-height: 1.5;
+            margin-bottom: 8px;
             font-style: italic;
             opacity: 0.8;
             overflow-wrap: anywhere;
         }
 
         .timeline-meta {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-soft);
-            line-height: 1.6;
-            margin-bottom: 8px;
+            line-height: 1.5;
+            margin-bottom: 6px;
             overflow-wrap: anywhere;
         }
 
@@ -932,35 +1203,37 @@
             margin-top: 8px;
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 6px;
         }
 
         .timeline-highlight {
-            background: #f1f5f9;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 9px;
+            background: #fff;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 8px;
+            font-weight: 600;
             color: var(--text-soft);
+            border: 1px solid #e2e8f0;
             overflow-wrap: anywhere;
         }
 
         .timeline-achievements {
             list-style: none;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #f1f5f9;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e2e8f0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5px 20px;
+            gap: 6px 16px;
         }
 
         .timeline-achievements li {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-soft);
             margin-bottom: 0;
-            line-height: 1.3;
+            line-height: 1.25;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: flex-start;
         }
 
@@ -968,6 +1241,35 @@
             content: '→';
             color: var(--gold-accent);
             font-weight: bold;
+        }
+
+        .experience-quote-block {
+            margin: -18px auto 0;
+            padding: 18px 22px;
+            background: #0f172a;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-left: 3px solid var(--gold-accent);
+            border-radius: 14px;
+            box-shadow: 0 16px 32px rgba(2, 6, 23, 0.4);
+            width: calc(100% - 120px);
+            max-width: 520px;
+            text-align: center;
+        }
+
+        .experience-quote-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e2e8f0;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .experience-quote-author {
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+            font-weight: 700;
         }
 
         .footer-strip {
@@ -1115,19 +1417,21 @@
         }
 
         .case-study {
-            display: flex;
-            gap: 40px;
-            height: 100%;
-            align-items: center;
-            margin-left: 80px;
-            margin-right: 80px;
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            gap: 48px;
+            flex: 1;
+            min-height: 0;
+            align-items: stretch;
+            margin-left: 70px;
+            margin-right: 70px;
         }
 
         .case-study-intro {
-            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-width: 0;
         }
 
         .case-study-eyebrow {
@@ -1192,12 +1496,16 @@
         }
 
         .case-study-stats {
-            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 16px;
+            gap: 12px;
             min-width: 0;
+            padding: 18px 20px;
+            border-radius: 22px;
+            background: rgba(2, 6, 23, 0.55);
+            box-shadow: 0 20px 45px rgba(2, 6, 23, 0.45);
+            backdrop-filter: blur(12px);
         }
 
         .case-study-stats > div:first-child {
@@ -1206,15 +1514,15 @@
         }
 
         .case-study-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 28px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
-            transition: transform 0.3s ease;
-            gap: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 12px;
             flex-wrap: wrap;
             min-width: 0;
         }
@@ -1225,8 +1533,9 @@
         }
 
         .case-study-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--blue-accent);
+            box-shadow: 0 14px 28px rgba(2, 6, 23, 0.35);
         }
 
         .metric-label {
@@ -1238,7 +1547,7 @@
         }
 
         .metric-value {
-            font-size: 34px;
+            font-size: 30px;
             font-weight: 700;
             color: var(--white);
         }
@@ -1261,10 +1570,10 @@
 
         .case-study-highlight {
             background: linear-gradient(135deg, var(--blue-accent), var(--blue-light));
-            padding: 26px;
+            padding: 20px;
             border-radius: 16px;
             color: var(--white);
-            margin-top: 8px;
+            margin-top: 4px;
             position: relative;
             overflow: hidden;
         }
@@ -1284,16 +1593,16 @@
             font-size: 11px;
             text-transform: uppercase;
             opacity: 0.9;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: 2px;
             position: relative;
             z-index: 1;
         }
 
         .case-study-highlight-text {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 600;
-            line-height: 1.4;
+            line-height: 1.35;
             position: relative;
             z-index: 1;
             overflow-wrap: anywhere;
@@ -1473,7 +1782,9 @@
 
         .page-7 .header-section,
         .page-7 .process-wrapper,
-        .page-7 .strategy-box {
+        .page-7 .strategy-box,
+        .page-7 .education-inline .education-divider,
+        .page-7 .education-inline .education-card {
             margin-left: 80px;
             margin-right: 80px;
         }
@@ -1633,6 +1944,7 @@
             font-style: italic;
             font-size: 38px;
             color: var(--gold-accent);
+            margin-top: -10px;
             margin-bottom: 8px;
         }
 
@@ -1648,6 +1960,7 @@
             margin-top: -20px;
             margin-bottom: 26px;
             line-height: 1.6;
+            word-spacing: 1px;
         }
 
         .contact-card {
@@ -1829,6 +2142,23 @@
                 grid-template-columns: 1fr;
             }
 
+            .page-1 .page-body {
+                grid-template-rows: auto auto;
+                padding: 24px;
+            }
+
+            .p1-hero {
+                min-height: 260px;
+            }
+
+            .p1-lower {
+                grid-template-columns: 1fr;
+            }
+
+            .page-1 .p1-name {
+                font-size: 44px;
+            }
+
             .page-3 .header-section,
             .page-3 .leadership-layout {
                 margin-left: 42px;
@@ -1841,39 +2171,39 @@
             }
 
             .page-2 .header-section,
-            .page-2 .timeline-container,
+            .page-2 .timeline,
             .page-2 .footer-strip {
-                margin-left: 42px;
-                margin-right: 42px;
+                margin-left: 36px;
+                margin-right: 36px;
+            }
+
+            .experience-quote-block {
+                width: calc(100% - 72px);
+                margin: -14px auto 0;
             }
 
             .page-edu .header-section,
-            .page-edu .education-list {
+            .page-edu .education-card,
+            .page-edu .education-divider {
                 margin-left: 42px;
                 margin-right: 42px;
             }
 
-            .education-item {
+            .education-row {
                 grid-template-columns: 1fr;
             }
 
-            .education-date {
-                text-align: left;
+            .education-meta {
+                grid-template-columns: 1fr;
             }
 
             .page-7 .header-section,
             .page-7 .process-wrapper,
-            .page-7 .strategy-box {
+            .page-7 .strategy-box,
+            .page-7 .education-inline .education-divider,
+            .page-7 .education-inline .education-card {
                 margin-left: 42px;
                 margin-right: 42px;
-            }
-
-            .p1-left {
-                min-height: 280px;
-            }
-
-            .p1-right {
-                padding: 50px 40px;
             }
 
             .page-2 .page-body,
@@ -1884,10 +2214,18 @@
                 padding: 42px;
             }
 
-            .timeline-container {
-                --timeline-gutter: 40px;
-                --timeline-line-x: 16px;
-                --timeline-year-width: 120px;
+            .timeline {
+                --timeline-gutter: 32px;
+                --timeline-line-x: 14px;
+                --timeline-year-width: 110px;
+            }
+
+            .timeline-track {
+                gap: 14px;
+            }
+
+            .timeline-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
             
             .timeline-item::before {
@@ -1899,7 +2237,8 @@
             }
 
             .case-study {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 28px;
             }
 
             .skills-right {
@@ -1917,7 +2256,7 @@
             }
 
             .p1-name {
-                font-size: 56px;
+                font-size: 40px;
             }
 
             .contact-data {
@@ -1930,6 +2269,10 @@
 
             .cta-header {
                 font-size: 18px;
+            }
+
+            .timeline-stats {
+                grid-template-columns: 1fr;
             }
 
             .footer-strip {
@@ -1977,6 +2320,8 @@
         }
 
         body.pdf-export .page {
+            width: 297mm;
+            height: 210mm;
             border-radius: 0;
             box-shadow: none;
             animation: none;
@@ -1988,14 +2333,6 @@
         body.pdf-export .download-btn,
         body.pdf-export .pdf-loading-overlay {
             display: none !important;
-        }
-
-        body.pdf-export .timeline-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        body.pdf-export .timeline-container {
-            scrollbar-width: none;
         }
 
         /* Druk */
@@ -2035,10 +2372,6 @@
                 opacity: 0.8;
             }
 
-            .timeline-container {
-                overflow: visible;
-                padding-right: 0;
-            }
         }
 
         /* Glassmorphism fallback for PDF */
@@ -2046,27 +2379,16 @@
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(16px);
         }
-
-        body.pdf-export .glass,
-        body.pdf-export .dash-panel {
-            background: rgba(15, 23, 42, 0.95) !important;
-            backdrop-filter: none !important;
-            box-shadow: none !important;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         /* --- WYMUSZENIE STANU KONCOWEGO I NAPRAWA BLEDOW DLA PDF --- */
         body.pdf-export * {
             animation: none !important;
             transition: none !important;
-            transform: none !important;
-            opacity: 1 !important;
-            background-image: none !important;
         }
 
         body.pdf-export *::before,
         body.pdf-export *::after {
-            background-image: none !important;
+            animation: none !important;
+            transition: none !important;
         }
 
         /* Wyjatki dla interfejsu */
@@ -2081,86 +2403,10 @@
         /* Html2canvas czesto nie radzi sobie z background-clip: text, powodujac blad non-finite */
         body.pdf-export .gold-gradient-text {
             background: none !important;
+            background-clip: border-box !important;
             -webkit-background-clip: border-box !important;
             -webkit-text-fill-color: #d4af37 !important;
             color: #d4af37 !important;
-        }
-
-        /* 2. NAPRAWA TIMELINE: Usuniecie gradientu z linii (moze miec wysokosc 0 przy renderze) */
-        body.pdf-export .timeline-track::before {
-            background: #3b82f6 !important;
-            width: 2px !important;
-        }
-
-        /* PDF solid fallbacks for elements using gradients */
-        body.pdf-export .case-study-highlight {
-            background: var(--blue-accent) !important;
-        }
-
-        body.pdf-export .skills-left {
-            background: var(--navy) !important;
-        }
-
-        body.pdf-export .css-bar {
-            background: var(--blue-accent) !important;
-        }
-
-        body.pdf-export .photo-placeholder-fallback {
-            background: var(--navy) !important;
-        }
-
-        body.pdf-export .parallel-badge {
-            background: var(--gold-accent) !important;
-            color: var(--navy) !important;
-        }
-
-        body.pdf-export .tech-box {
-            background: #f1f5f9 !important;
-        }
-
-        body.pdf-export .tech-box.accent {
-            background: #eff6ff !important;
-        }
-
-        body.pdf-export .dash-panel::after,
-        body.pdf-export .grid-pattern,
-        body.pdf-export .p1-left::after,
-        body.pdf-export .p1-photo::after,
-        body.pdf-export .contact-vis::after {
-            display: none !important;
-        }
-
-        body.pdf-export .contact-vis {
-            background: #0f172a url('outro.png') center/cover no-repeat !important;
-        }
-
-        body.pdf-export .contact-vis .photo-placeholder-img {
-            display: none !important;
-        }
-
-        body.pdf-export .process-wrapper::before,
-        body.pdf-export .strategy-box::after {
-            background: var(--blue-accent) !important;
-        }
-
-        /* 3. USUWANIE ELEMENTOW DEKORACYJNYCH (Orby i skanery psuja jakosc druku) */
-        body.pdf-export .orb,
-        body.pdf-export .chart-area::before,
-        body.pdf-export .case-study-highlight::before {
-            display: none !important;
-        }
-
-        /* Naprawa Timeline dla druku */
-        body.pdf-export .timeline-container {
-            overflow: visible !important;
-            height: auto !important;
-            display: block !important;
-        }
-
-        /* Naprawa slupkow wykresow */
-        body.pdf-export .css-bar {
-            height: 100% !important;
-            opacity: 1 !important;
         }
     </style>
 </head>
@@ -2196,7 +2442,6 @@
         <div class="progress-dot" data-page="5"></div>
         <div class="progress-dot" data-page="6"></div>
         <div class="progress-dot" data-page="7"></div>
-        <div class="progress-dot" data-page="8"></div>
     </div>
     
     <!-- Przycisk do pobrania -->
@@ -2211,34 +2456,84 @@
             <div class="orb orb--top-right"></div>
         </div>
         <div class="page-body">
-        <div class="p1-left">
-            <img class="photo-placeholder-img loaded" src="./stary 1.png" alt="Marcin Lubera">
-            <div class="photo-placeholder-fallback">
-                <i class="fas fa-user-tie"></i>
-                <span>Marcin Lubera</span>
+            <div class="p1-hero">
+                <img class="photo-placeholder-img loaded" src="./Marcin Lubera.jpeg" alt="Marcin Lubera">
+                <div class="photo-placeholder-fallback">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Marcin Lubera</span>
+                </div>
+                <div class="p1-hero-tag">Marcin Lubera</div>
             </div>
-        </div>
-        <div class="p1-right">
-            <div class="eyebrow">Premium Tech Magazine</div>
-            <div class="p1-role glow-text">
-                Dyrektor ds. Rozwoju Produktu, Marketingu i E-commerce
-                <span class="p1-experience">Doświadczenie: 11 lat</span>
+
+            <div class="p1-lower">
+                <div class="p1-panel">
+                    <div class="p1-role-line">
+                        <div class="p1-role">Dyrektor ds. Rozwoju Produktu, Marketingu i E-commerce</div>
+                        <span class="p1-experience">Doświadczenie: 11 lat</span>
+                    </div>
+                    <h1 class="p1-name">MARCIN LUBERA</h1>
+                    <div class="p1-quote-box">
+                        <p class="p1-quote">"Jeśli potrafisz o czymś marzyć, to potrafisz także tego dokonać"</p>
+                        <div class="p1-tag">Walt Disney</div>
+                        <p class="p1-summary">
+                            Posiadam ponad <span class="p1-highlight">11 letnie do&#347;wiadczenie</span> w szeroko poj&#281;tym marketingu cyfrowym jak i tradycyjnym dla B2C oraz B2B.<br>
+                            Ponad <span class="p1-highlight">6 letnie do&#347;wiadczenie</span> w zarz&#261;dzaniu zespo&#322;ami oraz poszczeg&#243;lnymi dzia&#322;ami w firmach.<br>
+                            Ch&#281;tnie opowiem szerzej o swoim do&#347;wiadczeniu zawodowym oraz umiej&#281;tno&#347;ciach.<br>
+                            Wierz&#281;, &#380;e moja osoba przyda si&#281; u Pa&#324;stwa w Organizacji.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p1-contact">
+                    <div class="contact-message">Porozmawiajmy o mojej roli u Pa&#324;stwa w firmie.</div>
+
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Zadzwoń do Marcina Lubery" onclick="window.location.href='tel:+48722197109';" onkeypress="if(event.key === 'Enter') window.location.href='tel:+48722197109';">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <div class="contact-label">Telefon</div>
+                            <div class="contact-text">(+48) 722 197 109</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Wyślij email do Marcina Lubery" onclick="window.location.href='mailto:marcinjbf@gmail.com';" onkeypress="if(event.key === 'Enter') window.location.href='mailto:marcinjbf@gmail.com';">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-text">marcinjbf@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Data urodzenia Marcina Lubery">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div>
+                            <div class="contact-label">Data urodzenia</div>
+                            <div class="contact-text">05.10.1992</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card" role="button" tabindex="0" aria-label="Lokalizacja Marcina Lubery">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <div class="contact-label">Lokalizacja</div>
+                            <div class="contact-text">Krak&#243;w / praca zdalna / relokacja</div>
+                        </div>
+                    </div>
+
+                    
+                </div>
             </div>
-            <h1 class="p1-name">MARCIN<br>LUBERA</h1>
-            <div class="p1-quote-box glass">
-                <p class="p1-quote">"Jeśli potrafisz o czymś marzyć, to potrafisz także tego dokonać"</p>
-                <div class="p1-tag">Walt Disney</div>
-                <p class="p1-summary">
-                    Posiadam ponad <span class="p1-highlight">11 letnie do&#347;wiadczenie</span> w szeroko poj&#281;tym marketingu cyfrowym jak i tradycyjnym dla B2C oraz B2B. Ponad <span class="p1-highlight">6 letnie do&#347;wiadczenie</span> w zarz&#261;dzaniu zespo&#322;ami oraz poszczeg&#243;lnymi dzia&#322;ami w firmach.<br>
-                    Ch&#281;tnie opowiem szerzej o swoim do&#347;wiadczeniu zawodowym oraz umiej&#281;tno&#347;ciach.<br>
-                    Wierz&#281;, &#380;e moja osoba przyda si&#281; u Pa&#324;stwa w Organizacji.
-                </p>
-            </div>
-        </div>
         </div>
         <div class="page-footer-info">
             <div class="page-label">Executive Profile</div>
-            <div class="page-number">01 / 09</div>
+            <div class="page-number">01 / 08</div>
         </div>
     </section>
 
@@ -2255,95 +2550,67 @@
         </div>
     </div>
 
-    <div class="timeline-container">
+    <div class="timeline">
         <div class="timeline-track">
-        <div class="timeline-item">
-            <div class="timeline-year">09.2024 - OBECNIE</div>
-            <div class="timeline-content">
-                <span class="parallel-badge">R&#211;WNOLEGLE</span>
-                <div class="timeline-role">General Marketing Director</div>
-                <div class="timeline-company">Zapakujemy.pl sp. z o.o. <span class="timeline-location">Wroc&#322;aw</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">100+ ty&#347; z&#322;</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">6 OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">1400+</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, Allegro, SEO, E-mail, Influencer marketing</div>
-                <p class="timeline-note">Zarz&#261;dzanie ca&#322;o&#347;ciow&#261; strategi&#261; wzrostu i transformacj&#261; cyfrow&#261; marki wraz z marketingiem.</p>
-                <ul class="timeline-achievements">
-                    <li>Skalowanie e-commerce i optymalizacja B2B/B2C.</li>
-                    <li>Wdra&#380;anie AI i automatyzacji marketingu.</li>
-                    <li>Zbudowanie 6-osobowego zespo&#322;u.</li>
-                    <li>Analityka predykcyjna w sprzeda&#380;y.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">E-commerce</span>
-                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
-                    <span class="timeline-highlight">Product Manager</span>
+            <div class="timeline-item">
+                <div class="timeline-year">09.2024 - OBECNIE</div>
+                <div class="timeline-content">
+                    <span class="parallel-badge">R&#211;WNOLEGLE</span>
+                    <div class="timeline-role">General Marketing Director</div>
+                    <div class="timeline-company">Zapakujemy.pl sp. z o.o. <span class="timeline-location">Wroc&#322;aw</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">100+ ty&#347; z&#322;</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">6 OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">1400+</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, Allegro, SEO, E-mail, Influencer marketing</div>
+                    <p class="timeline-note">Zarz&#261;dzanie ca&#322;o&#347;ciow&#261; strategi&#261; wzrostu i transformacj&#261; cyfrow&#261; marki wraz z marketingiem.</p>
+                    <ul class="timeline-achievements">
+                        <li>Skalowanie e-commerce i optymalizacja B2B/B2C.</li>
+                        <li>Wdra&#380;anie AI i automatyzacji marketingu.</li>
+                        <li>Zbudowanie 6-osobowego zespo&#322;u.</li>
+                        <li>Analityka predykcyjna w sprzeda&#380;y.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">E-commerce</span>
+                        <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                        <span class="timeline-highlight">Product Manager</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-year">11.2024 - 12.2025</div>
-            <div class="timeline-content">
-                <span class="parallel-badge">R&#211;WNOLEGLE</span>
-                <div class="timeline-role">General Marketing Director</div>
-                <div class="timeline-company">ISO TRADE sp. z o.o. <span class="timeline-location">Legnica</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">3.2+ mln z&#322;</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">30+ OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">12 500+</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, LinkedIn, Allegro, Empik, Temu, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
-                <p class="timeline-note">Budowanie strategii marketingowej B2C oraz B2B dla firmy handlowej oraz rozw&#243;j kana&#322;&#243;w sprzeda&#380;y wraz z pozyskiwaniem merchant&#243;w.</p>
-                <ul class="timeline-achievements">
-                    <li>Budowa i egzekucja strategii marketingowej dla segmentu B2C oraz B2B.</li>
-                    <li>Optymalizacja kampanii sprzeda&#380;owych i dzia&#322;a&#324; trade marketing.</li>
-                    <li>Rozw&#243;j kana&#322;&#243;w sprzeda&#380;y oraz wdro&#380;enie proces&#243;w handlowych.</li>
-                    <li>Zarz&#261;dzanie dzia&#322;em detalu oraz hurtu.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">E-commerce</span>
-                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
-                    <span class="timeline-highlight">End-to-End</span>
-                    <span class="timeline-highlight">Product Owner</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">11.2020 - 05.2025</div>
-            <div class="timeline-content">
-                <div class="timeline-role">General Director</div>
-                <div class="timeline-company">Just be FIT sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">250+ ty&#347; z&#322;</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">75+ OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">100+</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, Pinterest, LinkedIn, WP ads, Onet ads, Allegro, Empik, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
-                <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Plac&#243;wki partnerskie</div>
-                <p class="timeline-note">Kompleksowe zarz&#261;dzanie nad firm&#261;, skalowanie i rozw&#243;j brandu oraz podmarek.</p>
-                <ul class="timeline-achievements">
-                    <li>Zarz&#261;dzanie firm&#261; oraz strategiczny nadz&#243;r nad rozwojem.</li>
-                    <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
-                    <li>Product Owner oraz zarz&#261;dzanie ca&#322;&#261; firm&#261; - 75+ os&#243;b.</li>
-                    <li>100% zrealizowanie za&#322;o&#380;e&#324; biznesowych firmy.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">Marketing</span>
-                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
-                    <span class="timeline-highlight">Rozw&#243;j produkt&#243;w</span>
-                    <span class="timeline-highlight">Outcome-Driven</span>
+            <div class="timeline-item">
+                <div class="timeline-year">11.2024 - 12.2025</div>
+                <div class="timeline-content">
+                    <span class="parallel-badge">R&#211;WNOLEGLE</span>
+                    <div class="timeline-role">General Marketing Director</div>
+                    <div class="timeline-company">ISO TRADE sp. z o.o. <span class="timeline-location">Legnica</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">3.2+ mln z&#322;</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">30+ OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W: <span class="timeline-stat-value">12 500+</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, LinkedIn, Allegro, Empik, Temu, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
+                    <p class="timeline-note">Budowanie strategii marketingowej B2C oraz B2B dla firmy handlowej oraz rozw&#243;j kana&#322;&#243;w sprzeda&#380;y wraz z pozyskiwaniem merchant&#243;w.</p>
+                    <ul class="timeline-achievements">
+                        <li>Budowa i egzekucja strategii marketingowej dla segmentu B2C oraz B2B.</li>
+                        <li>Optymalizacja kampanii sprzeda&#380;owych i dzia&#322;a&#324; trade marketing.</li>
+                        <li>Rozw&#243;j kana&#322;&#243;w sprzeda&#380;y oraz wdro&#380;enie proces&#243;w handlowych.</li>
+                        <li>Zarz&#261;dzanie dzia&#322;em detalu oraz hurtu.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">E-commerce</span>
+                        <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                        <span class="timeline-highlight">End-to-End</span>
+                        <span class="timeline-highlight">Product Owner</span>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     <div class="page-footer-info">
         <div class="page-label">Professional Journey</div>
-        <div class="page-number">02 / 09</div>
+        <div class="page-number">02 / 08</div>
     </div>
 </section>
 
@@ -2360,151 +2627,191 @@
         </div>
     </div>
 
-    <div class="timeline-container">
+    <div class="timeline">
         <div class="timeline-track">
-
-        <div class="timeline-item">
-            <div class="timeline-year">01.2022 - 02.2024</div>
-            <div class="timeline-content">
-                <div class="timeline-role">Global Director</div>
-                <div class="timeline-company">FULL HELP sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">50+ ty&#347; z&#322;</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">15+ OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">50+</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, LinkedIn, SEO, E-mail, SMS</div>
-                <p class="timeline-note">Prowadzenie ekspansji na rynki zagraniczne, pe&#322;ne zarz&#261;dzanie rozwojem, marketingiem i zespo&#322;ami rozproszonymi.</p>
-                <ul class="timeline-achievements">
-                    <li>Ekspansja na rynki zagraniczne i koordynacja projekt&#243;w mi&#281;dzynarodowych.</li>
-                    <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
-                    <li>Realizacja projektu AdTech na rynek PL, UE, USA.</li>
-                    <li>Prowadzenie zespo&#322;&#243;w rozproszonych i usprawnianie komunikacji.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">Marketing</span>
-                    <span class="timeline-highlight">Zarz&#261;dzanie</span>
-                    <span class="timeline-highlight">Product Manager</span>
-                    <span class="timeline-highlight">Product Backlog Management</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">03.2018 - 06.2020</div>
-            <div class="timeline-content">
-                <div class="timeline-role">Marketing Manager</div>
-                <div class="timeline-company">ADS4Help sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">7+ mln z&#322; (&#322;&#261;cznie)</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">8 OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">-</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, Allegro, Empik, Amazon, SEO, E-mail</div>
-                <p class="timeline-note">Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w oraz zarz&#261;dzanie zespo&#322;em 8-osobowym.</p>
-                <ul class="timeline-achievements">
-                    <li>Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w.</li>
-                    <li>Zarz&#261;dzanie zespo&#322;em 8-osobowym.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">Marketing</span>
-                    <span class="timeline-highlight">E-commerce</span>
-                    <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
+            <div class="timeline-item">
+                <div class="timeline-year">11.2020 - 05.2025</div>
+                <div class="timeline-content">
+                    <div class="timeline-role">General Director</div>
+                    <div class="timeline-company">Just be FIT sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">250+ ty&#347; z&#322;</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">75+ OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">100+</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, TikTok, Pinterest, LinkedIn, WP ads, Onet ads, Allegro, Empik, Amazon, SEO, GEO, E-mail, SMS, Influencer marketing</div>
+                    <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Plac&#243;wki partnerskie</div>
+                    <p class="timeline-note">Kompleksowe zarz&#261;dzanie nad firm&#261;, skalowanie i rozw&#243;j brandu oraz podmarek.</p>
+                    <ul class="timeline-achievements">
+                        <li>Zarz&#261;dzanie firm&#261; oraz strategiczny nadz&#243;r nad rozwojem.</li>
+                        <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
+                        <li>Product Owner oraz zarz&#261;dzanie ca&#322;&#261; firm&#261; - 75+ os&#243;b.</li>
+                        <li>100% zrealizowanie za&#322;o&#380;e&#324; biznesowych firmy.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">Marketing</span>
+                        <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                        <span class="timeline-highlight">Rozw&#243;j produkt&#243;w</span>
+                        <span class="timeline-highlight">Outcome-Driven</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-year">11.2016 - 02.2018</div>
-            <div class="timeline-content">
-                <div class="timeline-role">Performance Marketing Specialist</div>
-                <div class="timeline-company">Health Nation sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">1+ mln z&#322;</span></div>
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">4 OS&#211;B</span></div>
-                    <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">1</span></div>
-                </div>
-                <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, LinkedIn, SEO, E-mail, SMS</div>
-                <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Siedziby korporacji</div>
-                <p class="timeline-note">Realizacja za&#322;o&#380;e&#324; firmy poprzez wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL wraz z marketingiem. Pozyskiwanie i wsp&#243;&#322;praca bezpo&#347;rednia z merchantami, klientami kluczowymi oraz korporacjami.</p>
-                <ul class="timeline-achievements">
-                    <li>Wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL.</li>
-                    <li>Pozyskiwanie i wsp&#243;&#322;praca z merchantami oraz klientami kluczowymi.</li>
-                    <li>Realizacja dzia&#322;a&#324; marketingowych online i offline.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">Marketing</span>
-                    <span class="timeline-highlight">Product Manager</span>
-                    <span class="timeline-highlight">End-to-End</span>
+            <div class="timeline-item">
+                <div class="timeline-year">01.2022 - 02.2024</div>
+                <div class="timeline-content">
+                    <div class="timeline-role">Global Director</div>
+                    <div class="timeline-company">FULL HELP sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">50+ ty&#347; z&#322;</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">15+ OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">50+</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Meta, Google, LinkedIn, SEO, E-mail, SMS</div>
+                    <p class="timeline-note">Prowadzenie ekspansji na rynki zagraniczne, pe&#322;ne zarz&#261;dzanie rozwojem, marketingiem i zespo&#322;ami rozproszonymi.</p>
+                    <ul class="timeline-achievements">
+                        <li>Ekspansja na rynki zagraniczne i koordynacja projekt&#243;w mi&#281;dzynarodowych.</li>
+                        <li>Tworzenie i optymalizacja dzia&#322;a&#324; marketingowych.</li>
+                        <li>Realizacja projektu AdTech na rynek PL, UE, USA.</li>
+                        <li>Prowadzenie zespo&#322;&#243;w rozproszonych i usprawnianie komunikacji.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">Marketing</span>
+                        <span class="timeline-highlight">Zarz&#261;dzanie</span>
+                        <span class="timeline-highlight">Product Manager</span>
+                        <span class="timeline-highlight">Product Backlog Management</span>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">2014 - 2016</div>
-            <div class="timeline-content">
-                <div class="timeline-role">Team Leader</div>
-                <div class="timeline-company">Alior Bank <span class="timeline-location">Krak&#243;w</span></div>
-                <div class="timeline-stats">
-                    <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">5 OS&#211;B</span></div>
-                </div>
-                <p class="timeline-note">Kierowanie 5-osobowym zespo&#322;em przy procesie weryfikacji kredyt&#243;w dla klient&#243;w.</p>
-                <ul class="timeline-achievements">
-                    <li>Kierowanie 5-osobowym zespo&#322;em.</li>
-                    <li>Weryfikacja kredyt&#243;w dla klient&#243;w.</li>
-                </ul>
-                <div class="timeline-highlights">
-                    <span class="timeline-highlight">Sprzeda&#380;</span>
-                    <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
-                    <span class="timeline-highlight">Outcome-Driven</span>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 
     <div class="page-footer-info">
         <div class="page-label">Professional Journey</div>
-        <div class="page-number">03 / 09</div>
+        <div class="page-number">03 / 08</div>
     </div>
 </section>
 
-    <!-- Strona 2c -->
-    <section class="page page-edu" id="pageEdu">
-        <div class="page-decor">
-            <div class="grid-pattern grid-pattern--light"></div>
+<!-- Strona 2c -->
+<section class="page page-2" id="page2c">
+    <div class="page-decor">
+        <div class="grid-pattern grid-pattern--light"></div>
+    </div>
+    <div class="header-section">
+        <div>
+            <div class="page-title">Do&#347;wiadczenie Zawodowe</div>
+            <div class="header-caption">Od Specialist do General Director</div>
         </div>
-        <div class="page-body">
-            <div class="header-section">
-                <div>
-                    <div class="page-title">Wykszta&#322;cenie</div>
-                    <div class="header-caption">Education</div>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-track">
+            <div class="timeline-item">
+                <div class="timeline-year">03.2018 - 06.2020</div>
+                <div class="timeline-content">
+                    <div class="timeline-role">Marketing Manager</div>
+                    <div class="timeline-company">ADS4Help sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">7+ mln z&#322; (&#322;&#261;cznie)</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">8 OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">-</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, Allegro, Empik, Amazon, SEO, E-mail</div>
+                    <p class="timeline-note">Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w oraz zarz&#261;dzanie zespo&#322;em 8-osobowym.</p>
+                    <ul class="timeline-achievements">
+                        <li>Prowadzenie dzia&#322;a&#324; marketingowych dla 50+ klient&#243;w.</li>
+                        <li>Zarz&#261;dzanie zespo&#322;em 8-osobowym.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">Marketing</span>
+                        <span class="timeline-highlight">E-commerce</span>
+                        <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="education-list">
-                <div class="education-item">
-                    <div class="education-date">10.2016 &ndash; 08.2018</div>
-                    <div class="education-details">
-                        <div class="education-school">Wy&#380;sza Szko&#322;a Zarz&#261;dzania i Bankowo&#347;ci w Krakowie</div>
-                        <div class="education-field">Kierunek: zarz&#261;dzanie i marketing | Specjalizacja: Zarz&#261;dzanie Strategiczne Marketingiem Online</div>
+            <div class="timeline-item">
+                <div class="timeline-year">11.2016 - 02.2018</div>
+                <div class="timeline-content">
+                    <div class="timeline-role">Performance Marketing Specialist</div>
+                    <div class="timeline-company">Health Nation sp. z o.o. <span class="timeline-location">Krak&#243;w</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">BUD&#379;ET MIESI&#280;CZNY: <span class="timeline-stat-value">1+ mln z&#322;</span></div>
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">4 OS&#211;B</span></div>
+                        <div class="timeline-stat">ID PRODUKT&#211;W/US&#321;UG: <span class="timeline-stat-value">1</span></div>
+                    </div>
+                    <div class="timeline-meta"><strong>Digital marketing:</strong> Facebook, Google, LinkedIn, SEO, E-mail, SMS</div>
+                    <div class="timeline-meta"><strong>Marketing:</strong> Radio, Bilbordy, Ulotki, Siedziby korporacji</div>
+                    <p class="timeline-note">Realizacja za&#322;o&#380;e&#324; firmy poprzez wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL wraz z marketingiem. Pozyskiwanie i wsp&#243;&#322;praca bezpo&#347;rednia z merchantami, klientami kluczowymi oraz korporacjami.</p>
+                    <ul class="timeline-achievements">
+                        <li>Wdra&#380;anie nowego produktu/us&#322;ugi na rynek PL.</li>
+                        <li>Pozyskiwanie i wsp&#243;&#322;praca z merchantami oraz klientami kluczowymi.</li>
+                        <li>Realizacja dzia&#322;a&#324; marketingowych online i offline.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">Marketing</span>
+                        <span class="timeline-highlight">Product Manager</span>
+                        <span class="timeline-highlight">End-to-End</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="education-item">
-                    <div class="education-date">10.2012 &ndash; 02.2016</div>
-                    <div class="education-details">
-                        <div class="education-school">Akademia G&#243;rniczo-Hutnicza im. Stanis&#322;awa Staszica w Krakowie</div>
-                        <div class="education-field">Kierunek: metalurgia | Specjalizacja: In&#380;ynieria Materia&#322;owa na Wydziale Metali Nie&#380;elaznych</div>
+        </div>
+    </div>
+
+    <div class="page-footer-info">
+        <div class="page-label">Professional Journey</div>
+        <div class="page-number">04 / 08</div>
+    </div>
+</section>
+
+<!-- Strona 2d -->
+<section class="page page-2" id="page2d">
+    <div class="page-decor">
+        <div class="grid-pattern grid-pattern--light"></div>
+    </div>
+    <div class="header-section">
+        <div>
+            <div class="page-title">Do&#347;wiadczenie Zawodowe</div>
+            <div class="header-caption">Od Specialist do General Director</div>
+        </div>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-track">
+            <div class="timeline-item timeline-item--compact">
+                <div class="timeline-year">2014 - 2016</div>
+                <div class="timeline-content">
+                    <div class="timeline-role">Team Leader</div>
+                    <div class="timeline-company">Alior Bank <span class="timeline-location">Krak&#243;w</span></div>
+                    <div class="timeline-stats">
+                        <div class="timeline-stat">ZESP&#211;&#321;: <span class="timeline-stat-value">5 OS&#211;B</span></div>
+                    </div>
+                    <p class="timeline-note">Kierowanie 5-osobowym zespo&#322;em przy procesie weryfikacji kredyt&#243;w dla klient&#243;w.</p>
+                    <ul class="timeline-achievements">
+                        <li>Kierowanie 5-osobowym zespo&#322;em.</li>
+                        <li>Weryfikacja kredyt&#243;w dla klient&#243;w.</li>
+                    </ul>
+                    <div class="timeline-highlights">
+                        <span class="timeline-highlight">Sprzeda&#380;</span>
+                        <span class="timeline-highlight">Kierowanie zespo&#322;em</span>
+                        <span class="timeline-highlight">Outcome-Driven</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-footer-info">
-            <div class="page-label">Education</div>
-            <div class="page-number">04 / 09</div>
-        </div>
-    </section>
+    </div>
+
+    <div class="experience-quote-block">
+        <div class="experience-quote-text">&quot;Procesy s&#261; po to, by uwalnia&#263; potencja&#322; zespo&#322;u, nie go blokowa&#263;.&quot;</div>
+        <div class="experience-quote-author">Marcin Lubera</div>
+    </div>
+
+    <div class="page-footer-info">
+        <div class="page-label">Professional Journey</div>
+        <div class="page-number">05 / 08</div>
+    </div>
+</section>
 
     <!-- Strona 3 -->
     <section class="page page-3" id="page3">
@@ -2568,94 +2875,7 @@
         </div>
         <div class="page-footer-info">
             <div class="page-label">Leadership DNA</div>
-            <div class="page-number">05 / 09</div>
-        </div>
-    </section>
-
-    <!-- Strona 4 -->
-    <section class="page page-4 page--dark" id="page4">
-        <div class="page-decor">
-            <div class="grid-pattern grid-pattern--dark"></div>
-        </div>
-
-        <div class="case-study">
-            <div class="case-study-intro">
-                <div class="case-study-eyebrow">E-commerce Growth</div>
-                <h2 class="case-study-title">Skalowanie<br>Sprzedaży<br><span>Just be FIT</span></h2>
-
-                <div class="case-study-block">
-                    <div class="case-study-label">Wyzwanie:</div>
-                    <p class="case-study-text">
-                        Stagnacja sprzedaży przy rosnących kosztach pozyskania klienta (CAC).
-                        Brak spójnej strategii retencji. Niska efektywność kampanii reklamowych.
-                    </p>
-                </div>
-
-                <div class="case-study-block">
-                    <div class="case-study-label">Rozwiązanie:</div>
-                    <ul class="case-study-list">
-                        <li>AI + Marketing Automation (Salesmanago) dla personalizacji i retencji</li>
-                        <li>Zespoł growth + segmentacja RFM klientów B2C</li>
-                        <li>Optymalizacja kampanii Google Ads pod ROAS</li>
-                        <li>Rebranding i redesign strony dla lepszej konwersji</li>
-                    </ul>
-                </div>
-                
-                <div class="case-study-block">
-                    <div class="case-study-label">Technologie:</div>
-                    <p class="case-study-text">
-                        Salesmanago, Google Ads, Meta Ads, Shopify, Klaviyo, Hotjar, Google Analytics 4
-                    </p>
-                </div>
-            </div>
-
-            <div class="case-study-stats">
-                <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; margin-bottom: -10px;">
-                    <span style="font-size: 9px; color: #4ade80; border: 1px solid #4ade80; padding: 2px 6px; border-radius: 4px;">DANE ZWERYFIKOWANE</span>
-                </div>
-                <div class="case-study-card">
-                    <div>
-                        <div class="metric-label">Wzrost przychodów</div>
-                        <div class="metric-value gold-gradient-text">+314%</div>
-                    </div>
-                    <div class="metric-icon" aria-hidden="true">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                </div>
-
-                <div class="case-study-card">
-                    <div>
-                        <div class="metric-label">Średni ROAS</div>
-                        <div class="metric-value gold-gradient-text">32+</div>
-                    </div>
-                    <div class="metric-icon metric-icon--gold" aria-hidden="true">
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <div class="case-study-card">
-                    <div>
-                        <div class="metric-label">Zmniejszenie CAC</div>
-                        <div class="metric-value gold-gradient-text">-40%</div>
-                    </div>
-                    <div class="metric-icon" aria-hidden="true">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-
-                <div class="case-study-highlight">
-                    <div class="case-study-highlight-label">Ruch organiczny 2024</div>
-                    <div class="case-study-highlight-text">RUCH ORGANICZNY NA STRONIE ROK 2024: 33.4 mln</div>
-                </div>
-                <div class="case-study-highlight">
-                    <div class="case-study-highlight-label">Kluczowy sukces</div>
-                    <div class="case-study-highlight-text">Efekt dźwigni: AI + automatyzacja + zespół growth = 1.1 mln+ przychodu i CAC -40%.</div>
-                </div>
-            </div>
-        </div>
-        <div class="page-footer-info">
-            <div class="page-label">Case Study</div>
-            <div class="page-number">06 / 09</div>
+            <div class="page-number">06 / 08</div>
         </div>
     </section>
 
@@ -2666,7 +2886,7 @@
                 <div class="tech-box" style="background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(212,175,55,0.05)); border: 1px solid rgba(212,175,55,0.3);">
                     <div class="tech-title" style="color: var(--gold-accent);">AI & Innovation Stack</div>
                     <div class="tech-badges">
-                        <span class="tech-badge" style="background: var(--gold-accent); color: #000;">LLM / ChatGPT</span>
+                        <span class="tech-badge" style="background: var(--gold-accent); color: #000;">LLM / AI</span>
                         <span class="tech-badge">Marketing Automation AI</span>
                         <span class="tech-badge">Analiza Predykcyjna</span>
                     </div>
@@ -2689,16 +2909,19 @@
                 <div class="tech-box">
                     <div class="tech-title">Marketplace & E-com</div>
                     <div class="tech-badges">
-                        <span class="tech-badge">Allegro Ads</span>
+                        <span class="tech-badge">Allegro</span>
                         <span class="tech-badge">Amazon</span>
                         <span class="tech-badge">Empik</span>
                         <span class="tech-badge">Erli</span>
                         <span class="tech-badge">Temu</span>
                         <span class="tech-badge">Morele</span>
+                        <span class="tech-badge">Wordpress</span>
                         <span class="tech-badge">WooCommerce</span>
                         <span class="tech-badge">Magento</span>
+                        <span class="tech-badge">Prestashop</span>
                         <span class="tech-badge">Shopify</span>
                         <span class="tech-badge">Shoper</span>
+                        <span class="tech-badge">Idosell</span>
                     </div>
                 </div>
 
@@ -2714,7 +2937,7 @@
                         <span class="tech-badge">Mailerlite</span>
                         <span class="tech-badge">Mailchimp</span>
                         <span class="tech-badge">Smsapi</span>
-                        <span class="tech-badge">GA4 / GTM</span>
+                        <span class="tech-badge">GA4 / GTM / GMC</span>
                     </div>
                 </div>
             </div>
@@ -2723,19 +2946,19 @@
                 <div class="eyebrow">Kompetencje</div>
                 <h2>Kompetencje <span class="accent">Strategiczne</span></h2>
                 <ul class="soft-list">
-                    <li>Zarządzanie zespołami rozproszonymi (10+ osób)</li>
-                    <li>Budowanie strategii e-commerce i digital transformation</li>
-                    <li>Analityka danych i KPI (GA4, GSC, CRM)</li>
+                    <li>Zarządzanie zespołami</li>
+                    <li>Budowanie strategii e-commerce i digital marketing</li>
+                    <li>Analityka danych i KPI</li>
                     <li>Optymalizacja procesów (Lean, Agile)</li>
                     <li>Skalowanie sprzedaży B2B / B2C</li>
-                    <li>Zarządzanie budżetami marketingowymi (500k+ PLN)</li>
+                    <li>Zarządzanie budżetami marketingowymi</li>
                     <li>Rebranding i rozwój marek</li>
                 </ul>
             </div>
         </div>
         <div class="page-footer-info">
             <div class="page-label">Skill Stack</div>
-            <div class="page-number">07 / 09</div>
+            <div class="page-number">07 / 08</div>
         </div>
     </section>
 
@@ -2779,78 +3002,57 @@
             <strong>Marketing Automation & CRM:</strong>
             Kluczem do sukcesu nie jest tylko pozyskanie leada, ale jego utrzymanie. Łączę dane z CRM z automatyzacją, aby budować LTV klienta. Implementacja odpowiednich narz&#281;dzi znacz&#261;co zwi&#281;ksza efektywno&#347;&#263; i wyniki firmy.
         </div>
+
+        <div class="education-inline">
+            <div class="header-section">
+                <div>
+                    <div class="page-title">Wykszta&#322;cenie</div>
+                    <div class="header-caption">Education</div>
+                </div>
+            </div>
+
+            <div class="education-divider"></div>
+
+            <div class="education-card">
+                <div class="education-bubble">
+                    <div class="education-row">
+                        <div class="education-period">10.2016 &ndash; 08.2018</div>
+                        <div class="education-info">
+                            <div class="education-degree">Wy&#380;sza Szko&#322;a Zarz&#261;dzania i Bankowo&#347;ci w Krakowie</div>
+                            <div class="education-meta">
+                                <span class="education-meta-label"><i class="fas fa-book-open"></i>Kierunek</span>
+                                <span>zarz&#261;dzanie i marketing</span>
+                            </div>
+                            <div class="education-meta">
+                                <span class="education-meta-label"><i class="fas fa-bullseye"></i>Specjalizacja</span>
+                                <span>Zarz&#261;dzanie Strategiczne Marketingiem Online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-bubble">
+                    <div class="education-row">
+                        <div class="education-period">10.2012 &ndash; 02.2016</div>
+                        <div class="education-info">
+                            <div class="education-degree">Akademia G&#243;rniczo-Hutnicza im. Stanis&#322;awa Staszica w Krakowie</div>
+                            <div class="education-meta">
+                                <span class="education-meta-label"><i class="fas fa-book-open"></i>Kierunek</span>
+                                <span>metalurgia</span>
+                            </div>
+                            <div class="education-meta">
+                                <span class="education-meta-label"><i class="fas fa-bullseye"></i>Specjalizacja</span>
+                                <span>In&#380;ynieria Materia&#322;owa na Wydziale Metali Nie&#380;elaznych</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="page-footer-info">
             <div class="page-label">Sales Booster</div>
-            <div class="page-number">08 / 09</div>
-        </div>
-    </section>
-
-    <!-- Strona 8 -->
-    <section class="page page-8 page--dark" id="page8">
-        <div class="page-decor">
-            <div class="grid-pattern grid-pattern--dark"></div>
-        </div>
-        <div class="page-body">
-        <div class="contact-vis">
-            <img class="photo-placeholder-img loaded" src="outro.png" alt="Wspolpraca">
-            <div class="photo-placeholder-fallback">
-                <i class="fas fa-handshake"></i>
-                <span>Gotowy na współpracę</span>
-            </div>
-        </div>
-        <div class="contact-data">
-            <div class="thank-you">Dziękuję za uwagę.</div>
-            <div class="cta-header">Porozmawiajmy o skalowaniu Twojego biznesu.</div>
-            <div class="contact-message">Porozmawiajmy o mojej roli u Pa&#324;stwa w firmie.</div>
-
-            <div class="contact-card" role="button" tabindex="0" aria-label="Zadzwoń do Marcina Lubery" onclick="window.location.href='tel:+48722197109';" onkeypress="if(event.key === 'Enter') window.location.href='tel:+48722197109';">
-                <div class="contact-icon" aria-hidden="true">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <div>
-                    <div class="contact-label">Telefon</div>
-                    <div class="contact-text">(+48) 722 197 109</div>
-                </div>
-            </div>
-
-            <div class="contact-card" role="button" tabindex="0" aria-label="Wyślij email do Marcina Lubery" onclick="window.location.href='mailto:marcinjbf@gmail.com';" onkeypress="if(event.key === 'Enter') window.location.href='mailto:marcinjbf@gmail.com';">
-                <div class="contact-icon" aria-hidden="true">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div>
-                    <div class="contact-label">Email</div>
-                    <div class="contact-text">marcinjbf@gmail.com</div>
-                </div>
-            </div>
-
-            <div class="contact-card" role="button" tabindex="0" aria-label="Data urodzenia Marcina Lubery">
-                <div class="contact-icon" aria-hidden="true">
-                    <i class="fas fa-calendar-day"></i>
-                </div>
-                <div>
-                    <div class="contact-label">Data urodzenia</div>
-                    <div class="contact-text">05.10.1992</div>
-                </div>
-            </div>
-            
-            <div class="contact-card" role="button" tabindex="0" aria-label="Lokalizacja Marcina Lubery">
-                <div class="contact-icon" aria-hidden="true">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div>
-                    <div class="contact-label">Lokalizacja</div>
-                    <div class="contact-text">Krak&#243;w / praca zdalna / relokacja</div>
-                </div>
-            </div>
-
-            <p class="contact-note">
-                Chętnie zaprezentuję szersze case study podczas spotkania. Dysponuję kompletnymi danymi z realizowanych projektów, które można zweryfikować.
-            </p>
-        </div>
-        </div>
-        <div class="page-footer-info">
-            <div class="page-label">Contact</div>
-            <div class="page-number">09 / 09</div>
+            <div class="page-number">08 / 08</div>
         </div>
     </section>
 
@@ -2861,7 +3063,6 @@
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
         const downloadBtn = document.getElementById('downloadBtn');
-        const timelineContainers = document.querySelectorAll('.timeline-container');
         const pdfLoadingOverlay = document.getElementById('pdfLoadingOverlay');
         const loadingText = document.getElementById('loadingText');
         const loadingProgressBar = document.getElementById('loadingProgressBar');
@@ -2954,25 +3155,36 @@
             pages.forEach((page) => observer.observe(page));
         }
 
-        // Allow wheel only inside timeline containers
-        if (timelineContainers.length) {
-            timelineContainers.forEach((container) => {
-                container.addEventListener('wheel', (event) => {
-                    const { scrollTop, scrollHeight, clientHeight } = container;
-                    const delta = event.deltaY;
-                    const atTop = scrollTop <= 0;
-                    const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
-
-                    if ((delta < 0 && atTop) || (delta > 0 && atBottom)) {
-                        return;
-                    }
-                    event.stopPropagation();
-                }, { passive: true });
-            });
-        }
-
         // Init navigation
         updateNavUI();
+
+        function waitForFonts() {
+            if (document.fonts && document.fonts.ready) {
+                return document.fonts.ready;
+            }
+            return Promise.resolve();
+        }
+
+        function waitForImages(root = document) {
+            const images = Array.from(root.querySelectorAll('img'));
+            if (!images.length) {
+                return Promise.resolve();
+            }
+            return Promise.all(images.map((img) => {
+                if (img.complete && img.naturalWidth !== 0) {
+                    return Promise.resolve();
+                }
+                return new Promise((resolve) => {
+                    const done = () => {
+                        img.removeEventListener('load', done);
+                        img.removeEventListener('error', done);
+                        resolve();
+                    };
+                    img.addEventListener('load', done);
+                    img.addEventListener('error', done);
+                });
+            }));
+        }
         
         // Przycisk pobierania PDF
         async function exportToPdf() {
@@ -2991,6 +3203,9 @@
             btn.disabled = true;
 
             document.body.classList.add('pdf-export');
+            await new Promise((resolve) => requestAnimationFrame(resolve));
+            await waitForFonts();
+            await waitForImages();
 
             try {
                 const { jsPDF } = window.jspdf;
@@ -3005,6 +3220,8 @@
                 const totalPages = pagesToRender.length;
                 const pageWidth = pdf.internal.pageSize.getWidth();
                 const pageHeight = pdf.internal.pageSize.getHeight();
+                const viewportWidth = document.documentElement.clientWidth;
+                const viewportHeight = document.documentElement.clientHeight;
 
                 for (let i = 0; i < totalPages; i += 1) {
                     // Aktualizacja progress bara
@@ -3013,35 +3230,56 @@
                     loadingText.textContent = `Przetwarzanie strony ${i + 1} z ${totalPages}...`;
 
                     const pageElement = pagesToRender[i];
+                    const rect = pageElement.getBoundingClientRect();
+                    const captureWidth = Math.ceil(rect.width);
+                    const captureHeight = Math.ceil(rect.height);
                     const pageBackground = window.getComputedStyle(pageElement).backgroundColor || '#ffffff';
                     const canvas = await html2canvas(pageElement, {
-                        scale: 4, // ZMIANA Z 2 NA 4: Zapewni krystaliczna ostrosc tekstu (odpowiednik 300 DPI)
+                        scale: 2,
                         useCORS: true,
-                        allowTaint: true,
-                        scrollX: 0,
-                        scrollY: 0,
-                        windowWidth: 1122, // Szerokosc A4 w pikselach przy 96 DPI (warto wymusic)
-                        windowHeight: 794,
+                        allowTaint: false,
+                        width: captureWidth,
+                        height: captureHeight,
+                        windowWidth: viewportWidth,
+                        windowHeight: viewportHeight,
                         backgroundColor: pageBackground,
                         logging: false,
                         onclone: (clonedDoc) => {
-                            // Trik: Wymuszamy, aby wszystkie elementy w klonie byly widoczne (np. timeline)
-                            const timeline = clonedDoc.querySelector('.timeline-container');
-                            if (timeline) {
-                                timeline.style.overflow = 'visible';
-                                timeline.style.height = 'auto';
-                            }
+                            clonedDoc.querySelectorAll('.photo-placeholder-img').forEach((img) => {
+                                const src = img.currentSrc || img.getAttribute('src');
+                                const wrapper = img.parentElement;
+                                if (!src || !wrapper) {
+                                    return;
+                                }
+                                wrapper.style.backgroundImage = `url("${src}")`;
+                                wrapper.style.backgroundSize = 'cover';
+                                wrapper.style.backgroundPosition = 'center';
+                                wrapper.style.backgroundRepeat = 'no-repeat';
+                                img.style.visibility = 'hidden';
+                            });
                         },
                         removeContainer: true
                     });
 
-                    const imgData = canvas.toDataURL('image/jpeg', 0.95); // Zmniejszona jakość dla mniejszego pliku
+                    const imgData = canvas.toDataURL('image/jpeg', 0.95); // Lower quality for smaller file
 
                     if (i > 0) {
                         pdf.addPage();
                     }
 
-                    pdf.addImage(imgData, 'JPEG', 0, 0, pageWidth, pageHeight, undefined, 'FAST');
+                    let renderHeight = pageHeight;
+                    let renderWidth = (canvas.width * renderHeight) / canvas.height;
+                    let renderX = (pageWidth - renderWidth) / 2;
+                    let renderY = 0;
+
+                    if (renderWidth > pageWidth) {
+                        renderWidth = pageWidth;
+                        renderHeight = (canvas.height * renderWidth) / canvas.width;
+                        renderX = 0;
+                        renderY = (pageHeight - renderHeight) / 2;
+                    }
+
+                    pdf.addImage(imgData, 'JPEG', renderX, renderY, renderWidth, renderHeight, undefined, 'FAST');
                     
                     // Mały delay dla UI
                     await new Promise(resolve => setTimeout(resolve, 100));
@@ -3165,7 +3403,6 @@
                     alert(`Umiejętność: ${this.textContent}\n\nPoziom zaawansowania: Ekspert\nDoświadczenie: 2+ lat`);
                 });
             });
-        });
         
         // Obsluga przewijania myszka/kolem
         const scrollThreshold = 60;
@@ -3230,7 +3467,7 @@
                 backdrop-filter: blur(12px);
             `;
             quickContact.innerHTML = `
-                <h4 style="margin: 0 0 6px 0; color: var(--gold-accent); font-size: 12px; letter-spacing: 1px; text-transform: none; font-weight: 700;">KONTAKT DO MNIE: Ch&#281;tnie odpowiem na ka&#380;de pytanie</h4>
+                <h4 style="margin: 0 0 6px 0; color: var(--gold-accent); font-size: 12px; letter-spacing: 1px; text-transform: none; font-weight: 700;">Ch&#281;tnie odpowiem na ka&#380;de pytanie</h4>
                 <p style="font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, 0.85); margin: 0 0 14px 0; font-weight: 300;">Jesteś zainteresowany współpracą?</p>
                 <div style="display: flex; gap: 10px;">
                     <button onclick="window.location.href='tel:+48722197109'" style="
